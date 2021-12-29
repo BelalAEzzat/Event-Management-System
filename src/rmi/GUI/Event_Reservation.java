@@ -4,16 +4,30 @@
  * and open the template in the editor.
  */
 package rmi.GUI;
+
+import java.util.ArrayList;
 import org.jdatepicker.JDateComponent;
+import rmi.Admin;
+import rmi.Reservee;
+import rmi.Venue;
 
 public class Event_Reservation extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Event_Reservation
-     */
-    public Event_Reservation() {
+    private Reservee reservee;
+            
+       
+    public Event_Reservation(Reservee reservee) {
         initComponents();
-        for()
+        this.reservee = reservee;
+        try{
+            ArrayList<Venue> Venues = Admin.oneAdmin.getVenues();
+            
+            for(Venue v:Venues){
+                this.jComboBox1.addItem(v.getVenueName());
+            }
+        }catch(Exception e){
+            
+        }
     }
 
     /**
@@ -38,6 +52,7 @@ public class Event_Reservation extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Event Reservation");
+        setResizable(false);
 
         jLabel1.setText("Name");
 
@@ -154,7 +169,7 @@ public class Event_Reservation extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Event_Reservation().setVisible(true);
+                new Event_Reservation(null).setVisible(true);
             }
         });
     }

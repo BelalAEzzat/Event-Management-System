@@ -7,13 +7,17 @@ public class Admin extends User {
     
  public static Admin oneAdmin;
     // Change from String Type to EventRequests when it's completed.
-    ArrayList<String> EventRequests = new ArrayList<String>();
-    ArrayList<String> Veneues = new ArrayList<String>();
-    
+    ArrayList<String> EventRequests;
+    ArrayList<Venue> Venues;
+    ArrayList<ThirdPartyCompany> ThirdPartyCompanies;
     
     @Override
     public String toString() {
         return "Admin{" + "EventRequests=" + EventRequests + '}';
+    }
+
+    public ArrayList<Venue> getVenues() {
+        return Venues;
     }
     
     
@@ -21,6 +25,13 @@ public class Admin extends User {
 
     private Admin(String Name, String Password, String Email_Address) {
         super(Name, Password, Email_Address);
+        Venues = new ArrayList<Venue>();
+        EventRequests = new ArrayList<String>();
+        ThirdPartyCompanies = new ArrayList<ThirdPartyCompany>();
+    }
+
+    public ArrayList<ThirdPartyCompany> getThirdPartyCompanies() {
+        return ThirdPartyCompanies;
     }
     
    

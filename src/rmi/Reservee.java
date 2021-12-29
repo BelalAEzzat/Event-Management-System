@@ -5,7 +5,27 @@
  */
 package rmi;
 
+import java.util.ArrayList;
 
-public class Reservee {
+
+public class Reservee extends User {
+
+   public ArrayList<Integer> hostedEvents;
+   public ArrayList<Integer> requestedEvents;
+   public ArrayList<Integer> upcomingEvents;
+
+   public Reservee(ArrayList<Integer> hostedEvents, ArrayList<Integer> requestedEvents, ArrayList<Integer> upcomingEvents, String Name, String Password, String Email_Address) {
+        super(Name, Password, Email_Address);
+        this.hostedEvents = hostedEvents;
+        this.requestedEvents = requestedEvents;
+        this.upcomingEvents = upcomingEvents;
+    }
+   
+   public void requestEvent(Event event){
+   
+   
+   
+   }
+   
     
 }
