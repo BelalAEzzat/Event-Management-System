@@ -10,5 +10,24 @@ package rmi;
  * @author pc
  */
 public class ThirdPartyCompany {
+    private String name;
+    private String Type;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String Type) {
+        this.Type = Type;
+    }
+    
     
 }
