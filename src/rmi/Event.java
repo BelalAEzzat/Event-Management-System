@@ -26,14 +26,15 @@ public class Event implements subject {
     private Venue evetVenue;
 
     private ArrayList<Visitor> visitors = new ArrayList();
-    private ArrayList<Feedback> feedback  = new ArrayList();
+    private ArrayList<Feedback> feedback = new ArrayList();
     private ArrayList<Service> ThirdPartyCompany = new ArrayList();
     private List<Observer> observers = new ArrayList<Observer>();
 
-    public Event(int eventID, String eventName, Date eventDate, Event_Request eventRequest, Reservee eventHost, boolean Public, String eventAnnouncement, Venue evetVenue) {
+    public Event(int eventID, String eventName, Date eventDate, Event_Request eventRequest, Reservee eventHost,
+            boolean Public, String eventAnnouncement, Venue evetVenue) {
         this.eventID = eventID;
         this.eventName = eventName;
-        //this.eventTime = eventTime;
+        // this.eventTime = eventTime;
         this.eventDate = eventDate;
         this.eventRequest = eventRequest;
         this.eventHost = eventHost;
@@ -43,8 +44,6 @@ public class Event implements subject {
         observers = new ArrayList<Observer>();
     }
 
- 
-
     public void setEventID(int eventID) {
         this.eventID = eventID;
     }
@@ -52,8 +51,6 @@ public class Event implements subject {
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
-
-
 
     public void setEventRequest(Event_Request eventRequest) {
         this.eventRequest = eventRequest;
@@ -66,8 +63,6 @@ public class Event implements subject {
     public void setPublic(boolean Public) {
         this.Public = Public;
     }
-
-    
 
     public void setEvetVenue(Venue evetVenue) {
         this.evetVenue = evetVenue;
@@ -89,8 +84,6 @@ public class Event implements subject {
         return ThirdPartyCompany;
     }
 
-    
-
     public int getEventID() {
         return eventID;
     }
@@ -98,8 +91,6 @@ public class Event implements subject {
     public String getEventName() {
         return eventName;
     }
-
-
 
     public Event_Request getEventRequest() {
         return eventRequest;
@@ -129,43 +120,40 @@ public class Event implements subject {
         return feedback;
     }
 
-    
-    public void invite(){
-        boolean existuser=false;
+    public void invite() {
+        boolean existuser = false;
         int invitedUserIndex = -1;
-        int invitedUserName ;
+        int invitedUserName;
         int inviteduserID;
         System.out.println("pls enter the name of user you want to invite :");
         Scanner inviteduserObj = new Scanner(System.in);
         String inviteduser;
         inviteduser = inviteduserObj.nextLine();
-        if(inviteduser.equals(eventHost.getName())){
-            System.out.println("you cant invite yourself " );
-        }
-        else {
-            for(int i = 0; i < visitors.size();i++){
+        if (inviteduser.equals(eventHost.getName())) {
+            System.out.println("you cant invite yourself ");
+        } else {
+            for (int i = 0; i < visitors.size(); i++) {
                 invitedUserIndex = -1;
-                invitedUserName= visitors.get(i).getName();
-                if(inviteduser.equals(visitors.get(i).getName())){
-                    invitedUserIndex = i; 
-                    //inviteduserID=visitors.get(i).getUserID() -1;
-                    existuser=true;                    
+                invitedUserName = visitors.get(i).getName();
+                if (inviteduser.equals(visitors.get(i).getName())) {
+                    invitedUserIndex = i;
+                    // inviteduserID=visitors.get(i).getUserID() -1;
+                    existuser = true;
                     break;
-                    }
-            } 
-             
-            if(existuser){
-                Invite inv = new Invite(this, eventHost,Visitor.get(invitedUserIndex));   
-                Visitor.get(invitedUserIndex).invites.add(inv);
-                System.out.println(invitedUserName +" has been invited " );
-                existuser=false;
+                }
             }
-            else{
+
+            if (existuser) {
+                Invite inv = new Invite(this, eventHost, Visitor.get(invitedUserIndex));
+                Visitor.get(invitedUserIndex).invites.add(inv);
+                System.out.println(invitedUserName + " has been invited ");
+                existuser = false;
+            } else {
                 System.out.println("There is no user called " + inviteduser);
             }
         }
     }
-             
+
     public void kickVisitor(){
         boolean existuser=false;
         int invitedUserIndex = -1;
@@ -201,38 +189,35 @@ public class Event implements subject {
         }
              
     }
-                  
-    public void requestService(Service s) {
-    } 
 
-    ////////////////oberver////////////
+    public void requestService(Service s) {
+    }
+
+    //////////////// oberver////////////
     public void setEventAnnouncement(String eventAnnouncement) {
         this.eventAnnouncement = eventAnnouncement;
         notifyAllObservers();
     }
-    
-    public void notifyAllObservers(){
+
+    public void notifyAllObservers() {
         for (Observer observer : observers) {
             observer.update();
-            } 
         }
-    
-    public void registerObserver(Observer o){
+    }
+
+    public void registerObserver(Observer o) {
         observers.add(o);
     }
 
     @Override
     public void registerObserver(even.managment.system.Observer o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
+                                                                       // Tools | Templates.
     }
 
     @Override
     public void notifyAllObservers(even.managment.system.Observer o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
+                                                                       // Tools | Templates.
     }
 }
-
-         
-        
-    
-
