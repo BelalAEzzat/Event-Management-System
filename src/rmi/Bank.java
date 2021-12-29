@@ -10,6 +10,7 @@ package rmi;
  * @author pc
  */
 public class Bank {
+
     private String Name;
     private int AccountNumber;
 
@@ -33,10 +34,12 @@ public class Bank {
     public int getAccountNumber() {
         return AccountNumber;
     }
-    public void WithdrawMoney(String comment){
-        System.out.println("send money to"+AccountNumber+comment);
+
+    public void WithdrawMoney(String comment) {
+        System.out.println("send money to" + AccountNumber + comment);
     }
-    public void RefundMoney(String comment){
-        System.out.println("send money from"+AccountNumber + comment);
+
+    public void RefundMoney(String comment) {
+        System.out.println("send money from" + AccountNumber + comment);
     }
 }

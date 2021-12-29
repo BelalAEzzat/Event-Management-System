@@ -10,6 +10,7 @@ package rmi;
  * @author pc
  */
 public class Adaptor {
+
     private Bank bank;
 
     public Adaptor(Bank bank) {
@@ -23,23 +24,25 @@ public class Adaptor {
     public void setBank(Bank bank) {
         this.bank = bank;
     }
-    public void WithdrawMoney(){
-    if(bank.getName().equals("ahly")){
-    bank.RefundMoney("from bank Ahly");
-    }else if(bank.getName().equals("maser")){
-    bank.WithdrawMoney("from bank maser");
-    }else{
-        System.out.println("this bank is not supported");
+
+    public void WithdrawMoney() {
+        if (bank.getName().equals("ahly")) {
+            bank.RefundMoney("from bank Ahly");
+        } else if (bank.getName().equals("maser")) {
+            bank.WithdrawMoney("from bank maser");
+        } else {
+            System.out.println("this bank is not supported");
+        }
     }
-    }
-    public void RefundMoney(){
-       if(bank.getName().equals("ahly")){
-           bank.RefundMoney("to our bank ahly account:"+bank.getAccountNumber());
-       }else if(bank.getName().equals("maser")){
-        bank.RefundMoney("to our bank maser account:"+bank.getAccountNumber());
-       
-       }else{
-           System.out.println("this bank isn't supported");
-       }
+
+    public void RefundMoney() {
+        if (bank.getName().equals("ahly")) {
+            bank.RefundMoney("to our bank ahly account:" + bank.getAccountNumber());
+        } else if (bank.getName().equals("maser")) {
+            bank.RefundMoney("to our bank maser account:" + bank.getAccountNumber());
+
+        } else {
+            System.out.println("this bank isn't supported");
+        }
     }
 }

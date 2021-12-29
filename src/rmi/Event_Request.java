@@ -25,6 +25,7 @@ public class Event_Request {
         this.Status = Status;
         this.Descirption = Descirption;
         this.services = services;
+        services=new ArrayList<Service>();
         this.paymentmethod = paymentmethod;
         this.fees = fees;
     }

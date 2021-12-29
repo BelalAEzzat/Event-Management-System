@@ -10,7 +10,9 @@ package rmi;
  * @author pc
  */
 public interface BankService {
+
     public void WithdrawMoney();
+
     public void RefundMoney();
-    
+
 }

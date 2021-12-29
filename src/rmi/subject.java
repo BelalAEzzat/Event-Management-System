@@ -9,11 +9,10 @@ package rmi;
  *
  * @author Laptop World
  */
-
 public interface subject {
 
-      public void registerObserver(Observer o);
-      public void notifyAllObservers(Observer o);
-  
-  
+    public void registerObserver(Observer o);
+
+    public void notifyAllObservers(Observer o);
+
 }

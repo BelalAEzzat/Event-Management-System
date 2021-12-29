@@ -11,23 +11,7 @@ import java.rmi.registry.Registry;
 
 public class EvenManagmentSystem {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        try {
-            // My remote object [Skeleton]
-            PaymentMethod d=new PaymentMethod(0, 0, "name");
-            PaymentMethodInterface c = new RemoteProxy(d);
-            // My RMI Registry
-            Registry registry = LocateRegistry.createRegistry(500);
-            
-            //Add my object to the RMI Registry
-            registry.bind("calc", c);
-            System.out.println("My calculator is ready...");   
-        } catch (Exception ex) {
-           System.out.println("Exception occured");
-        }   
-        }
+   DB db=DB.getInstance();
     
+
 }

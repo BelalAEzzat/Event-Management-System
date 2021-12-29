@@ -10,5 +10,5 @@ package rmi;
  * @author pc
  */
 public class Annoucement {
-    
+
 }
