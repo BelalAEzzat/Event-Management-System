@@ -10,7 +10,7 @@ abstract public class User {
     private String Name ;
     private String Password;
     private String Email_Address;
-       ArrayList<String> Notifications = new ArrayList<String>();
+    ArrayList<String> Notifications = new ArrayList<String>();
     
 
     public User(String Name, String Password, String Email_Address) {

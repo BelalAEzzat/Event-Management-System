@@ -5,10 +5,7 @@
  */
 package rmi;
 
-/**
- *
- * @author pc
- */
+
 public class Reservee {
     
 }

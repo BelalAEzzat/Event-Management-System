@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Github/Even%20managment%20system/src/rmi/Reservee.java</file>
-            <file>file:/F:/Github/Even%20managment%20system/src/rmi/add_Venue.java</file>
-            <file>file:/F:/Github/Even%20managment%20system/src/rmi/Event.java</file>
-            <file>file:/F:/Github/Even%20managment%20system/src/rmi/MainMenu.java</file>
-            <file>file:/F:/Github/Even%20managment%20system/src/rmi/Observer.java</file>
-            <file>file:/F:/Github/Even%20managment%20system/src/rmi/EvenManagmentSystem.java</file>
-            <file>file:/F:/Github/Even%20managment%20system/src/rmi/Event_Reservation.java</file>
+            <file>file:/F:/Github/Event-Management-System/src/rmi/GUI/add_Venue.java</file>
+            <file>file:/F:/Github/Event-Management-System/src/rmi/GUI/UserMenu.java</file>
+            <file>file:/F:/Github/Event-Management-System/src/rmi/Venue.java</file>
+            <file>file:/F:/Github/Event-Management-System/src/rmi/Admin.java</file>
+            <file>file:/F:/Github/Event-Management-System/src/rmi/GUI/Event_Reservation.java</file>
+            <file>file:/F:/Github/Event-Management-System/src/rmi/Event.java</file>
+            <file>file:/F:/Github/Event-Management-System/src/rmi/GUI/Login.java</file>
         </group>
     </open-files>
 </project-private>

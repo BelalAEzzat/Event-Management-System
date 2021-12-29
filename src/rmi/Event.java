@@ -230,6 +230,22 @@ public class Event implements subject {
     public void notifyAllObservers(even.managment.system.Observer o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
+
+    @Override
+    public void registerObserver(rmi.Observer o) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+
+    @Override
+    public void notifyAllObservers(rmi.Observer o) {
+        // TODO Auto-generated method stub
+        
+    }
 }
 
          

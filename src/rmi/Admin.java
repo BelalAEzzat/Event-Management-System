@@ -8,14 +8,16 @@ public class Admin extends User {
  public static Admin oneAdmin;
     // Change from String Type to EventRequests when it's completed.
     ArrayList<String> EventRequests = new ArrayList<String>();
-
+    ArrayList<String> Veneues = new ArrayList<String>();
+    
+    
     @Override
     public String toString() {
         return "Admin{" + "EventRequests=" + EventRequests + '}';
     }
     
     
-     ArrayList<String> Veneues = new ArrayList<String>();
+     
 
     private Admin(String Name, String Password, String Email_Address) {
         super(Name, Password, Email_Address);
