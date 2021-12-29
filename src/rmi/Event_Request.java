@@ -8,7 +8,10 @@ package rmi;
 import java.security.Provider;
 import java.util.ArrayList;
 
-
+/**
+ *
+ * @author pc
+ */
 public class Event_Request {
    private Venue venue;
    private String Status;
