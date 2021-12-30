@@ -135,15 +135,20 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String email = this.email_textfield.getText();
-        String password = this.pass_textfield.getText();
-        r = db.LoginReservee(email, password);       
-        v = db.loginVisitor(email, password);
-        if(r !=null & v !=null){
-            new UserMenu(r,v).setVisible(true);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(this, "Erorr");
+        try{
+            String email = this.email_textfield.getText();
+            String password = this.pass_textfield.getText();
+            r = db.LoginReservee(email, password);       
+            v = db.loginVisitor(email, password);
+            if(r !=null & v !=null){
+                new UserMenu(r,v).setVisible(true);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Wrong Username/Password");
+            }
+        
+        }catch(Exception e){
+        
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
