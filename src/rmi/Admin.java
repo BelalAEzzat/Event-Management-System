@@ -27,6 +27,7 @@ public class Admin extends User {
         super(Name, Password, Email_Address);
         Venues = new ArrayList<Venue>();
         EventRequests = new ArrayList<String>();
+        EventRequests.add("saaas");
         ThirdPartyCompanies = new ArrayList<ThirdPartyCompany>();
     }
 

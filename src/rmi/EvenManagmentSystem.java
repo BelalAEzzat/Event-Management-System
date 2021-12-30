@@ -15,19 +15,12 @@ public class EvenManagmentSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
-            // My remote object [Skeleton]
-            PaymentMethod d=new PaymentMethod(0, 0, "name");
-            PaymentMethodInterface c = new RemoteProxy(d);
-            // My RMI Registry
-            Registry registry = LocateRegistry.createRegistry(500);
-            
-            //Add my object to the RMI Registry
-            registry.bind("calc", c);
-            System.out.println("My calculator is ready...");   
-        } catch (Exception ex) {
-           System.out.println("Exception occured");
-        }   
-        }
-    
+        Admin a = Admin.getInstance();
+        DB db = DB.getinstance();
+        db.insertAdmin(a);
+        Admin b = db.findAdminByemailandpassword("zyad184823@bue.edu.eg", "NotYourBussiness");
+        Venue e=new Venue("assa", "aas", 0);
+        db.insertvenues(e);
+        System.out.println("");
+    }
 }
