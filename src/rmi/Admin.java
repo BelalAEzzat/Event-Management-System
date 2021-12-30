@@ -38,7 +38,7 @@ public class Admin extends User {
    
    public static Admin getInstance(){
     if(oneAdmin == null){
-    oneAdmin = new Admin("Zyad" , "NotYourBussiness" , "zyad184823@bue.edu.eg");
+    oneAdmin = new Admin("admin" , "admin" , "admin@mail.com");
     }
     return oneAdmin;
     }

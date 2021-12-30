@@ -272,9 +272,7 @@ public class DB {
 
     }
 
-    public PaymentMethod(int cardnumber) {
-
-    }
+   
 
     public void SaveAll() {
 

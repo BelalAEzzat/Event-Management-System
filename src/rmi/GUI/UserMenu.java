@@ -5,22 +5,22 @@
  */
 package rmi.GUI;
 
-/**
- *
- * @author Zew
- */
+import rmi.DB;
+import rmi.Reservee;
+import rmi.Visitor;
 public class UserMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainMenu
-     */
+    DB db;
+    Reservee r;
+    Visitor v;
     
     private String username;
 
-    public UserMenu(String username) {
+    public UserMenu(Reservee r,Visitor v) {
         initComponents();
-        this.username = username;
-        this.jLabel1.setText("Welcome " + this.username);
+        db = DB.getinstance();
+        this.r = r;
+        this.v = v;
     }
     
     
@@ -137,7 +137,7 @@ public class UserMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserMenu("Zezo").setVisible(true);
+                new UserMenu(null,null).setVisible(true);
             }
         });
     }

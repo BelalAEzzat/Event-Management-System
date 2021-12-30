@@ -14,11 +14,11 @@ public class Reservee extends User {
    public ArrayList<Integer> requestedEvents;
    public ArrayList<Integer> upcomingEvents;
 
-   public Reservee(ArrayList<Integer> hostedEvents, ArrayList<Integer> requestedEvents, ArrayList<Integer> upcomingEvents, String Name, String Password, String Email_Address) {
+   public Reservee(String Name, String Password, String Email_Address) {
         super(Name, Password, Email_Address);
-        this.hostedEvents = hostedEvents;
-        this.requestedEvents = requestedEvents;
-        this.upcomingEvents = upcomingEvents;
+        hostedEvents = new ArrayList<Integer>();
+        requestedEvents = new ArrayList<Integer>();
+        upcomingEvents = new ArrayList<Integer>();
     }
    
    public void requestEvent(Event event){

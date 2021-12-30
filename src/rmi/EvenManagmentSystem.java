@@ -18,7 +18,7 @@ public class EvenManagmentSystem {
         Admin a = Admin.getInstance();
         DB db = DB.getinstance();
         db.insertAdmin(a);
-        Admin b = db.findAdminByemailandpassword("zyad184823@bue.edu.eg", "NotYourBussiness");
+        Admin b = db.loginAdmin("zyad184823@bue.edu.eg", "NotYourBussiness");
         Venue e=new Venue("assa", "aas", 0);
         db.insertvenues(e);
         System.out.println("");
