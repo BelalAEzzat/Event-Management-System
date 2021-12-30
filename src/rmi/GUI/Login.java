@@ -137,7 +137,7 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String email = this.email_textfield.getText();
         String password = this.pass_textfield.getText();
-        r = db.LoginReservee(email, password);
+        r = db.LoginReservee(email, password);       
         v = db.loginVisitor(email, password);
         if(r !=null & v !=null){
             new UserMenu(r,v).setVisible(true);
