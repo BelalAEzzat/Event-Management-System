@@ -212,6 +212,7 @@ public class Login extends javax.swing.JFrame {
                 Visitor v = new Visitor("user","user","user");
                 db.insertreservee(r);
                 db.insertVisitor(v);
+                
             }
         });
     }

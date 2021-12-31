@@ -12,19 +12,27 @@ import rmi.Venue;
 import rmi.ThirdPartyCompany;
 import rmi.DB;
 public class VenueManagement extends javax.swing.JFrame {
-
+    static DB db;
     ArrayList<Venue> Venues;
     Venue vChosen = null;
     Admin a;
     public VenueManagement(Admin a) {
         initComponents();
         this.a =a;
+        db = DB.getinstance();
         try{
             //Venues;
-            //get venues from database
+            Venue temp = new Venue("plaza","rehab",12);
+            a.Venues.add(temp);
+            db.insertvenues(temp);
+            
+            Venues = a.getVenues();
+            
             for(Venue v:Venues){
                 this.jComboBox1.addItem(v.getVenueName());
+                
             }
+            
         }catch(Exception e){
             
         }
@@ -209,7 +217,8 @@ public class VenueManagement extends javax.swing.JFrame {
                     break;
                 }
             }
-            
+            this.jTextField1.setEditable(true);
+            this.jTextField1.setText(vChosen.getVenueName());
             this.jTextArea1.setText("");
             for(ThirdPartyCompany c: vChosen.getCompanies()){
                 this.jTextArea1.append(c.getName());

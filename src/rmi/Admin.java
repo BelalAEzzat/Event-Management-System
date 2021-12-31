@@ -8,7 +8,7 @@ public class Admin extends User {
  public static Admin oneAdmin;
     // Change from String Type to EventRequests when it's completed.
     ArrayList<String> EventRequests;
-    ArrayList<Venue> Venues;
+    public ArrayList<Venue> Venues;
     ArrayList<ThirdPartyCompany> ThirdPartyCompanies;
     
     @Override
