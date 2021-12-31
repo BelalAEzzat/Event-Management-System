@@ -5,17 +5,13 @@
  */
 package rmi.GUI;
 
-/**
- *
- * @author Zew
- */
+import rmi.Admin;
 public class AdminMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminMenu
-     */
-    public AdminMenu() {
+    Admin a;
+    public AdminMenu(Admin a) {
         initComponents();
+        this.a = a;
     }
 
     /**
@@ -38,6 +34,11 @@ public class AdminMenu extends javax.swing.JFrame {
         jLabel1.setText("Admin Menu");
 
         jButton1.setText("Manage Venues");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Manage Services");
 
@@ -58,15 +59,28 @@ public class AdminMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(70, 70, 70)
+                .addGap(60, 60, 60)
                 .addComponent(jButton1)
-                .addGap(40, 40, 40)
+                .addGap(50, 50, 50)
                 .addComponent(jButton2)
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            
+            
+                new VenueManagement(a).setVisible(true);
+                dispose();
+            
+        
+        }catch(Exception e){
+        
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -98,7 +112,7 @@ public class AdminMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminMenu().setVisible(true);
+                new AdminMenu(null).setVisible(true);
             }
         });
     }

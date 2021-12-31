@@ -8,10 +8,12 @@ import javax.swing.JOptionPane;
 import rmi.DB;
 import rmi.Reservee;
 import rmi.Visitor;
+import rmi.Admin;
 public class Login extends javax.swing.JFrame {
     static DB db;
     Reservee r;
     Visitor v;
+    Admin a;
     /**
      * Creates new form Login
      */
@@ -64,6 +66,11 @@ public class Login extends javax.swing.JFrame {
         jButton2.setText("Register");
 
         jButton3.setText("Admin");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Login As:");
@@ -151,6 +158,24 @@ public class Login extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try{
+            String email = this.email_textfield.getText();
+            String password = this.pass_textfield.getText();
+            a = db.loginAdmin(email, password);       
+            
+            if(a !=null){
+                new AdminMenu(a).setVisible(true);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Wrong Username/Password");
+            }
+        
+        }catch(Exception e){
+        
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
