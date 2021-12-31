@@ -13,22 +13,28 @@ import rmi.ThirdPartyCompany;
 import rmi.DB;
 public class VenueManagement extends javax.swing.JFrame {
     static DB db;
-    ArrayList<Venue> Venues;
     Venue vChosen = null;
     Admin a;
-    public VenueManagement(Admin a) {
+    public VenueManagement() {
         initComponents();
-        this.a =a;
+        
         db = DB.getinstance();
+        this.a =Admin.getInstance();
         try{
             //Venues;
-            Venue temp = new Venue("plaza","rehab",12);
-            a.Venues.add(temp);
-            db.insertvenues(temp);
+            Venue temp = new Venue("shop","damnhour",10);
+            //a.addVenue(temp);
             
-            Venues = a.getVenues();
+            this.jTextField1.setText(a.Venues.get(0).getVenueName());
+            this.jTextField2.setText(a.Venues.get(0).getVenuelocation());
+            this.jTextField3.setText(String.valueOf(a.Venues.get(0).getVenueMAxCapacity()));
             
-            for(Venue v:Venues){
+            if(a.Venues.get(0)!= null){
+                for(ThirdPartyCompany c:a.Venues.get(0).getCompanies()){
+                    this.jTextArea1.append(c.getName());
+                }
+            }
+            for(Venue v:a.Venues){
                 this.jComboBox1.addItem(v.getVenueName());
                 
             }
@@ -87,19 +93,26 @@ public class VenueManagement extends javax.swing.JFrame {
 
         jLabel4.setText("Location:");
 
-        jTextField2.setEditable(false);
-
         jLabel5.setText("MaxCapacity:");
 
-        jTextField3.setEditable(false);
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
 
-        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setToolTipText("");
         jTextArea1.setAutoscrolls(false);
         jScrollPane1.setViewportView(jTextArea1);
+
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Services:");
 
@@ -122,6 +135,11 @@ public class VenueManagement extends javax.swing.JFrame {
         });
 
         jButton5.setText("Add");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,20 +226,33 @@ public class VenueManagement extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void refillCombo(){
+        db = DB.getinstance();
+        this.a =Admin.getInstance();
+        this.jComboBox1.removeAllItems();
+        for(Venue v:a.Venues){
+                this.jComboBox1.addItem(v.getVenueName());
+                
+            }
+    }
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         try{
-            for(Venue v:Venues ){
+            
+            for(Venue v:a.Venues){
                 if(jComboBox1.getSelectedItem() == v.getVenueName()){
                     vChosen = v;
                     break;
                 }
             }
-            this.jTextField1.setEditable(true);
-            this.jTextField1.setText(vChosen.getVenueName());
-            this.jTextArea1.setText("");
-            for(ThirdPartyCompany c: vChosen.getCompanies()){
-                this.jTextArea1.append(c.getName());
+            
+            int i = a.Venues.indexOf(vChosen);
+            this.jTextField1.setText(a.Venues.get(i).getVenueName());
+            this.jTextField2.setText(a.Venues.get(i).getVenuelocation());
+            this.jTextField3.setText(String.valueOf(a.Venues.get(i).getVenueMAxCapacity()));
+            if(a.Venues.get(i)!= null){
+                for(ThirdPartyCompany c:a.Venues.get(0).getCompanies()){
+                    this.jTextArea1.append(c.getName());
+                }
             }
          
         }catch(Exception e){
@@ -269,7 +300,7 @@ public class VenueManagement extends javax.swing.JFrame {
                
             
             
-                new AdminMenu(a).setVisible(true);
+                new AdminMenu().setVisible(true);
                 dispose();
             
         
@@ -277,6 +308,21 @@ public class VenueManagement extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        new add_Venue(this).setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        char c = evt.getKeyChar();
+       if(!Character.isDigit(c)){
+           evt.consume();
+       }
+    }//GEN-LAST:event_jTextField3KeyTyped
 
     /**
      * @param args the command line arguments
@@ -308,7 +354,7 @@ public class VenueManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VenueManagement(null).setVisible(true);
+                new VenueManagement().setVisible(true);
             }
         });
     }

@@ -5,17 +5,17 @@
  */
 package rmi.GUI;
 
-/**
- *
- * @author Zew
- */
+import javax.swing.JOptionPane;
+
+import rmi.Admin;
+import rmi.Venue;
+import rmi.DB;
 public class add_Venue extends javax.swing.JFrame {
 
-    /**
-     * Creates new form add_Venue
-     */
-    public add_Venue() {
+    VenueManagement parent;
+    public add_Venue(VenueManagement parent) {
         initComponents();
+        this.parent = parent;
     }
 
     /**
@@ -42,6 +42,11 @@ public class add_Venue extends javax.swing.JFrame {
         jLabel1.setText("Add Venue");
 
         Submit.setLabel("Submit");
+        Submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Name");
 
@@ -109,6 +114,23 @@ public class add_Venue extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jTextField3KeyTyped
 
+    private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
+        if(!this.jTextField1.getText().matches("") & !this.jTextField2.getText().matches("")& !this.jTextField3.getText().matches("")){
+            
+            
+            String name = this.jTextField1.getText();
+            String location = this.jTextField2.getText();
+            int capacity = Integer.valueOf(this.jTextField3.getText());
+            Venue v = new Venue(name,location,capacity);
+            Admin a = Admin.getInstance();
+            a.addVenue(v);
+            parent.refillCombo();
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Fill all");
+        }
+    }//GEN-LAST:event_SubmitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -139,7 +161,7 @@ public class add_Venue extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new add_Venue().setVisible(true);
+                new add_Venue(null).setVisible(true);
             }
         });
     }

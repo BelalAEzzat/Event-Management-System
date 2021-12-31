@@ -9,9 +9,9 @@ import rmi.Admin;
 public class AdminMenu extends javax.swing.JFrame {
 
     Admin a;
-    public AdminMenu(Admin a) {
+    public AdminMenu() {
         initComponents();
-        this.a = a;
+        
     }
 
     /**
@@ -73,7 +73,7 @@ public class AdminMenu extends javax.swing.JFrame {
         try{
             
             
-                new VenueManagement(a).setVisible(true);
+                new VenueManagement().setVisible(true);
                 dispose();
             
         
@@ -112,7 +112,7 @@ public class AdminMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminMenu(null).setVisible(true);
+                new AdminMenu().setVisible(true);
             }
         });
     }

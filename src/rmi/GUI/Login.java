@@ -166,14 +166,14 @@ public class Login extends javax.swing.JFrame {
             a = db.loginAdmin(email, password);       
             
             if(a !=null){
-                new AdminMenu(a).setVisible(true);
+                new AdminMenu().setVisible(true);
                 dispose();
             }else{
                 JOptionPane.showMessageDialog(this, "Wrong Username/Password");
             }
         
         }catch(Exception e){
-        
+            System.out.println(e);;
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -210,9 +210,10 @@ public class Login extends javax.swing.JFrame {
                 new Login().setVisible(true);
                 Reservee r = new Reservee("user","user","user");
                 Visitor v = new Visitor("user","user","user");
+                
                 db.insertreservee(r);
                 db.insertVisitor(v);
-                
+                Admin.getInstance();
             }
         });
     }
