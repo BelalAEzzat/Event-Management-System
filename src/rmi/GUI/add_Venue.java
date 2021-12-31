@@ -12,8 +12,8 @@ import rmi.Venue;
 import rmi.DB;
 public class add_Venue extends javax.swing.JFrame {
 
-    VenueManagement parent;
-    public add_Venue(VenueManagement parent) {
+    AdminMenu parent;
+    public add_Venue(AdminMenu parent) {
         initComponents();
         this.parent = parent;
     }
