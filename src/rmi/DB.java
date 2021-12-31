@@ -68,10 +68,13 @@ public class DB {
 
     public void insertAdmin(Admin s) {
         ArrayList<Document> docs = admin.find().into(new ArrayList<Document>());
-        if (!(docs.size() > 0)) {
+        if ((docs.size() > 0)) {
+            admin.deleteOne(Filters.eq("Email_Address", s.getEmail_Address()));
             admin.insertOne(Document.parse(gson.toJson(s)));
             System.out.println("Admin inserted.");
-
+        } else {
+            admin.insertOne(Document.parse(gson.toJson(s)));
+            System.out.println("Admin inserted.");
         }
 
     }
@@ -191,13 +194,14 @@ public class DB {
 
     public Admin loginAdmin(String Email, String Password) {
         ArrayList<Document> docs = admin.find(Filters.eq("Email_Address", Email)).into(new ArrayList<Document>());
-
-        String jsonResult = docs.get(0).toJson();
-        Admin a = gson.fromJson(jsonResult, Admin.class);
-        System.out.println(a.getPassword());
-        System.out.println(Password);
-        if (a.getPassword().equals(Password)) {
-            return a;
+        if (docs.size() > 0) {
+            String jsonResult = docs.get(0).toJson();
+            Admin a = gson.fromJson(jsonResult, Admin.class);
+            System.out.println(a.getPassword());
+            System.out.println(Password);
+            if (a.getPassword().equals(Password)) {
+                return a;
+            }
         }
         return null;
 
@@ -272,14 +276,16 @@ public class DB {
 
     }
 
-   
-
-    public void SaveAll() {
-
+    public void UpdateAdmin() {
+        Admin s = Admin.getInstance();
+        ArrayList<Document> docs = admin.find().into(new ArrayList<Document>());
+        if ((docs.size() > 0)) {
+            admin.deleteOne(Filters.eq("Email_Address", s.getEmail_Address()));
+            admin.insertOne(Document.parse(gson.toJson(s)));
+            System.out.println("Admin inserted.");
+        } else {
+            admin.insertOne(Document.parse(gson.toJson(s)));
+            System.out.println("Admin inserted.");
+        }
     }
-
-    public void loadAll() {
-
-    }
-
 }
