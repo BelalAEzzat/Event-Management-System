@@ -28,7 +28,7 @@ public class DB {
     private MongoClient client;
     private MongoDatabase database;
     private MongoCollection<Document> admin;
-    private MongoCollection<Document> venues;
+
     private MongoCollection<Document> thirdPartycompany;
     private MongoCollection<Document> bank;
     private MongoCollection<Document> Employee;
@@ -47,7 +47,7 @@ public class DB {
         client = new MongoClient();
         database = client.getDatabase("Company"); // Database name
         admin = database.getCollection("admin"); // Collection name
-        venues = database.getCollection("venues");
+
         thirdPartycompany = database.getCollection("thirdPartycompany");
         bank = database.getCollection("bank");
         Employee = database.getCollection("Employee");
@@ -77,20 +77,6 @@ public class DB {
             System.out.println("Admin inserted.");
         }
 
-    }
-
-    public boolean insertvenues(Venue s) {
-        ArrayList<Venue> result = new ArrayList();
-        ArrayList<Document> docs = venues.find().into(new ArrayList<Document>());
-        for (int i = 0; i < docs.size(); i++) {
-            String jsonResult = docs.get(i).toJson();
-            if ((gson.fromJson(jsonResult, Venue.class).getVenueName().equals(s.getVenueName()))) {
-                return false;
-            }
-        }
-        venues.insertOne(Document.parse(gson.toJson(s)));
-        System.out.println("venues inserted.");
-        return true;
     }
 
     public boolean insertthirdPartycompany(ThirdPartyCompany s) {
@@ -207,12 +193,7 @@ public class DB {
 
     }
 
-    public Venue FindVenueBYName(String Name) {
-        ArrayList<Document> docs = venues.find(Filters.eq("venueName", Name)).into(new ArrayList<Document>());
-        String jsonResult = docs.get(0).toJson();
-        Venue a = gson.fromJson(jsonResult, Venue.class);
-        return a;
-    }
+
 
     public ThirdPartyCompany FindThirdPartybyName(String Name) {
         ArrayList<Document> docs = thirdPartycompany.find(Filters.eq("name", Name)).into(new ArrayList<Document>());
@@ -288,4 +269,57 @@ public class DB {
             System.out.println("Admin inserted.");
         }
     }
+
+    public void UpdatethirdPartycompany(ThirdPartyCompany s) {
+        ArrayList<Document> docs = thirdPartycompany.find(Filters.eq("name", s.getName())).into(new ArrayList<Document>());
+
+        thirdPartycompany.deleteOne(Filters.eq("name", s.getName()));
+        thirdPartycompany.insertOne(Document.parse(gson.toJson(s)));
+        System.out.println("ThirdPartyCompany inserted.");
+
+    }
+
+    public void UpdateBank(Bank s) {
+        ArrayList<Document> docs = bank.find(Filters.eq("Name", s.getName())).into(new ArrayList<Document>());
+
+        bank.deleteOne(Filters.eq("Name", s.getName()));
+        bank.insertOne(Document.parse(gson.toJson(s)));
+        System.out.println("Bank inserted.");
+
+    }
+
+    public void UpdateEmployee(Employee s) {
+        ArrayList<Document> docs = Employee.find(Filters.eq("Email_Address", s.getEmail_Address())).into(new ArrayList<Document>());
+        Employee.deleteOne(Filters.eq("Email_Address", s.getEmail_Address()));
+        Employee.insertOne(Document.parse(gson.toJson(s)));
+        System.out.println("Employee inserted.");
+
+    }
+
+    public void UpdateEvent(Event s) {
+        ArrayList<Document> docs = Event.find(Filters.eq("eventID", s.getEventID())).into(new ArrayList<Document>());
+        Event.deleteOne(Filters.eq("eventID", s.getEventID()));
+        Event.insertOne(Document.parse(gson.toJson(s)));
+        System.out.println("Employee inserted.");
+    }
+
+    public void UpdateEvent(Reservee s) {
+        ArrayList<Document> docs = reservee.find(Filters.eq("Email_Address", s.getEmail_Address())).into(new ArrayList<Document>());
+        reservee.deleteOne(Filters.eq("Email_Address", s.getEmail_Address()));
+        reservee.insertOne(Document.parse(gson.toJson(s)));
+        System.out.println("Employee inserted.");
+    }
+      public void UpdateVisitor(Visitor s) {
+        ArrayList<Document> docs = Visitor.find(Filters.eq("Email_Address", s.getEmail_Address())).into(new ArrayList<Document>());
+        Visitor.deleteOne(Filters.eq("Email_Address", s.getEmail_Address()));
+        Visitor.insertOne(Document.parse(gson.toJson(s)));
+        System.out.println("Visitor inserted.");
+    }
+        public void UpdatePaymentMethod(PaymentMethod s) {
+        ArrayList<Document> docs = PaymentMethod.find(Filters.eq("CardNumber", s.getCardNumber())).into(new ArrayList<Document>());
+        PaymentMethod.deleteOne(Filters.eq("CardNumber", s.getCardNumber()));
+        PaymentMethod.insertOne(Document.parse(gson.toJson(s)));
+        System.out.println("Employee inserted.");
+    }
+
 }

@@ -15,12 +15,10 @@ public class EvenManagmentSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Admin a = Admin.getInstance();
+        
         DB db = DB.getinstance();
-        db.insertAdmin(a);
-        Admin b = db.loginAdmin("zyad184823@bue.edu.eg", "NotYourBussiness");
-        Venue e = new Venue("sdfasdfa", "aas", 0);
-        a.addVenue(e);
+       ThirdPartyCompany a=new ThirdPartyCompany("name", "type");
+       db.insertthirdPartycompany(a);
         System.out.println();
     }
 }
