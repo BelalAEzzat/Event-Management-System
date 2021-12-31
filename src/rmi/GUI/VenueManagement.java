@@ -126,6 +126,11 @@ public class VenueManagement extends javax.swing.JFrame {
         jButton2.setText("-");
 
         jButton3.setText("Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Back");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -323,6 +328,27 @@ public class VenueManagement extends javax.swing.JFrame {
            evt.consume();
        }
     }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(!this.jTextField1.getText().matches("") & !this.jTextField2.getText().matches("")& !this.jTextField3.getText().matches("")){
+            
+            for(Venue v:a.Venues){
+                if(jComboBox1.getSelectedItem() == v.getVenueName()){
+                    vChosen = v;
+                    break;
+                }
+            }
+            int i = a.Venues.indexOf(vChosen);
+            a.Venues.get(i).setVenueName(this.jTextField1.getText());
+            a.Venues.get(i).setVenuelocation(this.jTextField2.getText());
+            a.Venues.get(i).setVenueMAxCapacity(Integer.valueOf(this.jTextField3.getText()));
+            db.UpdateAdmin();
+            this.a =Admin.getInstance();
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Fill all");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

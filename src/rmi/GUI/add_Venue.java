@@ -36,7 +36,9 @@ public class add_Venue extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Add Venue");
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Add Venue");
@@ -116,19 +118,28 @@ public class add_Venue extends javax.swing.JFrame {
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
         if(!this.jTextField1.getText().matches("") & !this.jTextField2.getText().matches("")& !this.jTextField3.getText().matches("")){
-            
-            
-            String name = this.jTextField1.getText();
-            String location = this.jTextField2.getText();
-            int capacity = Integer.valueOf(this.jTextField3.getText());
-            Venue v = new Venue(name,location,capacity);
+            boolean fail = false;
             Admin a = Admin.getInstance();
-            a.addVenue(v);
-            parent.refillCombo();
-            dispose();
+            for(Venue v:a.Venues){
+                if(this.jTextField1.getText().matches(v.getVenueName())){
+                    fail = true;
+                    break;
+                }
+            }
+            if(!fail){
+                String name = this.jTextField1.getText();
+                String location = this.jTextField2.getText();
+                int capacity = Integer.valueOf(this.jTextField3.getText());
+                Venue v = new Venue(name,location,capacity);
+                a.addVenue(v);
+                parent.refillCombo();
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Name already exists");
+            }
         }else{
-            JOptionPane.showMessageDialog(this, "Please Fill all");
-        }
+                JOptionPane.showMessageDialog(this, "Please Fill all");
+            }
     }//GEN-LAST:event_SubmitActionPerformed
 
     /**
