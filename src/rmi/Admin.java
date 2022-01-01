@@ -9,7 +9,7 @@ public class Admin extends User {
     
     ArrayList<Event_Request> EventRequests;
     public ArrayList<Venue> Venues;
-    ArrayList<ThirdPartyCompany> ThirdPartyCompanies;
+    public ArrayList<ThirdPartyCompany> ThirdPartyCompanies;
     @Override
     public String toString() {
         return "Admin{" + "EventRequests=" + EventRequests + '}';

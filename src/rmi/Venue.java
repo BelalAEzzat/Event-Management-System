@@ -17,7 +17,7 @@ public class Venue {
     private String venueName;
     private int venueMAxCapacity;
     private Boolean venueStatus;
-    private ArrayList<ThirdPartyCompany> companies;
+    public ArrayList<ThirdPartyCompany> companies;
     
     
     public Venue(String venueName,String venuelocation, int venueMAxCapacity) {

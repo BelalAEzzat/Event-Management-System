@@ -15,6 +15,7 @@ public class AdminMenu extends javax.swing.JFrame {
     static DB db;
     Venue vChosen = null;
     Admin a;
+    ThirdPartyCompany cChosen = null;
     public AdminMenu() {
         initComponents();
         
@@ -24,20 +25,12 @@ public class AdminMenu extends javax.swing.JFrame {
             //Venues;
             Venue temp = new Venue("shop","damnhour",10);
             //a.addVenue(temp);
-            
+            refillCombo();
             this.jTextField1.setText(a.Venues.get(0).getVenueName());
             this.jTextField2.setText(a.Venues.get(0).getVenuelocation());
             this.jTextField3.setText(String.valueOf(a.Venues.get(0).getVenueMAxCapacity()));
             
-            if(a.Venues.get(0)!= null){
-                for(ThirdPartyCompany c:a.Venues.get(0).getCompanies()){
-                    this.jTextArea1.append(c.getName());
-                }
-            }
-            for(Venue v:a.Venues){
-                this.jComboBox1.addItem(v.getVenueName());
-                
-            }
+            
             
         }catch(Exception e){
             
@@ -72,9 +65,13 @@ public class AdminMenu extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manage Venues");
+        setMaximumSize(new java.awt.Dimension(1, 2147483647));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -102,6 +99,7 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
@@ -117,14 +115,19 @@ public class AdminMenu extends javax.swing.JFrame {
 
         jLabel6.setText("Services:");
 
-        jButton1.setText("+");
+        jButton1.setText("Add");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("-");
+        jButton2.setText("Remove");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Save");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -154,90 +157,120 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setText("Create Service");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Delete Service");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Services Chosen:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField3))
+                .addGap(187, 187, 187)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(17, 17, 17)
+                            .addComponent(jButton4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3)
+                            .addGap(15, 15, 15)))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(118, 118, 118)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jComboBox2, 0, 130, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(24, 24, 24))
+                            .addComponent(jLabel5)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(80, 80, 80))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton6)))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
+                        .addComponent(jButton7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(10, Short.MAX_VALUE))
+                        .addComponent(jButton8)
+                        .addGap(90, 90, 90))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton3))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -246,11 +279,36 @@ public class AdminMenu extends javax.swing.JFrame {
         db = DB.getinstance();
         this.a =Admin.getInstance();
         this.jComboBox1.removeAllItems();
+        this.jComboBox2.removeAllItems();
         for(Venue v:a.Venues){
-                this.jComboBox1.addItem(v.getVenueName());
-                
+                this.jComboBox1.addItem(v.getVenueName());  
             }
+        for(ThirdPartyCompany c: Admin.oneAdmin.getThirdPartyCompanies()){
+                   this.jComboBox2.addItem(c.getName());
+        }
     }
+    
+    public void refillCombo2(){
+        db = DB.getinstance();
+        this.a =Admin.getInstance();
+        
+        this.jComboBox2.removeAllItems();
+        
+        for(ThirdPartyCompany c: Admin.oneAdmin.getThirdPartyCompanies()){
+                   this.jComboBox2.addItem(c.getName());
+        }
+    }
+    
+    
+    public void refillTextArea(){
+        this.jTextArea1.setText("");
+        for(ThirdPartyCompany c:vChosen.companies){
+            this.jTextArea1.append(c.getName()+ " | "+ c.getType()+"\n");
+        }
+    
+    
+    }
+    
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         try{
             
@@ -266,11 +324,7 @@ public class AdminMenu extends javax.swing.JFrame {
             this.jTextField1.setText(a.Venues.get(i).getVenueName());
             this.jTextField2.setText(a.Venues.get(i).getVenuelocation());
             this.jTextField3.setText(String.valueOf(a.Venues.get(i).getVenueMAxCapacity()));
-            if(a.Venues.get(i)!= null){
-                for(ThirdPartyCompany c:a.Venues.get(0).getCompanies()){
-                    this.jTextArea1.append(c.getName());
-                }
-            }
+            this.refillTextArea();
          
         }catch(Exception e){
             System.out.println(e);
@@ -281,31 +335,23 @@ public class AdminMenu extends javax.swing.JFrame {
         try{
             boolean found = false;
             
-            for(ThirdPartyCompany c: vChosen.getCompanies()){
-                if(jComboBox1.getSelectedItem() == c.getName()){
+            for(ThirdPartyCompany c:vChosen.companies){
+                String name = (String)this.jComboBox2.getSelectedItem();
+                if(name.matches(cChosen.getName())){
                     found = true;
                 }
             }
             
-            if(found){
-                JOptionPane.showMessageDialog(this, "Already Added");
+            if(!found){
+                vChosen.addCompany(cChosen);
+                db.UpdateAdmin();
+                this.refillTextArea();
             }else{
-                boolean found_c = false;
-                ThirdPartyCompany company = null;
-                for(ThirdPartyCompany c: Admin.oneAdmin.getThirdPartyCompanies()){
-                    if(jComboBox1.getSelectedItem() == c.getName()){
-                        found_c = true;
-                        company = c;
-                    }
+                JOptionPane.showMessageDialog(this, "Already Added");
+            }
                     
-                if(found_c){
-                    this.jTextArea1.append(company.getName());
-                    vChosen.addCompany(company);
-                }else{
-                    JOptionPane.showMessageDialog(this, "Erorr");
-                }
-            }
-            }
+                
+            
             
         }catch(Exception e){
             System.out.println(e);
@@ -325,10 +371,6 @@ public class AdminMenu extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        
-    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         new add_Venue(this).setVisible(true);
@@ -364,7 +406,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
+        try{
        
             for(Venue v:a.Venues){
                 String name = (String)jComboBox1.getSelectedItem();
@@ -376,10 +418,100 @@ public class AdminMenu extends javax.swing.JFrame {
             int i = a.Venues.indexOf(vChosen);
             a.Venues.remove(i);
             db.UpdateAdmin();
+            this.jTextField1.setText("");
+            this.jTextField2.setText("");
+            this.jTextField3.setText("");
             refillCombo();
-        
+            
+         
+            
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        try{
+            
+            for(Venue v:a.Venues){
+                String name = (String)jComboBox1.getSelectedItem();
+                if(name.matches(v.getVenueName())){
+                    vChosen = v;
+                    break;
+                }
+            }
+            
+            int i = a.Venues.indexOf(vChosen);
+            
+            for(ThirdPartyCompany c:a.ThirdPartyCompanies){
+                String name = (String)jComboBox2.getSelectedItem();
+                if(name.matches(c.getName())){
+                    cChosen = c;
+                    break;
+                }
+            }
+         
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        new add_Service(this).setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        try{
+       
+            for(ThirdPartyCompany c:a.ThirdPartyCompanies){
+                String name = (String)jComboBox2.getSelectedItem();
+                if(name.matches(c.getName())){
+                    cChosen = c;
+                    break;
+                }
+            }
+            int i = a.ThirdPartyCompanies.indexOf(cChosen);
+            a.ThirdPartyCompanies.remove(i);
+            
+            for(Venue v:a.Venues){
+                v.companies.remove(cChosen);
+            }
+            db.UpdateAdmin();
+            this.jTextArea1.setText("");
+            refillCombo();
+            
+         
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+       
+            for(ThirdPartyCompany c:vChosen.companies){
+                String name = (String)jComboBox2.getSelectedItem();
+                if(name.matches(c.getName())){
+                    vChosen.companies.remove(c);
+                    break;
+                }
+            }
+ 
+            this.refillTextArea();
+            
+            
+            db.UpdateAdmin();
+            
+            
+            
+         
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -423,6 +555,8 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -431,6 +565,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
