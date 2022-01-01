@@ -30,7 +30,13 @@ public class AdminMenu extends javax.swing.JFrame {
             this.jTextField2.setText(a.Venues.get(0).getVenuelocation());
             this.jTextField3.setText(String.valueOf(a.Venues.get(0).getVenueMAxCapacity()));
             
-            
+            for(Venue v:a.Venues){
+                String name = (String)jComboBox1.getSelectedItem();
+                if(name.equals(v.getVenueName())){
+                    vChosen = v;
+                    break;
+                }
+            }
             
         }catch(Exception e){
             
@@ -71,7 +77,6 @@ public class AdminMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manage Venues");
-        setMaximumSize(new java.awt.Dimension(1, 2147483647));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -234,10 +239,11 @@ public class AdminMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton5)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -314,7 +320,7 @@ public class AdminMenu extends javax.swing.JFrame {
             
             for(Venue v:a.Venues){
                 String name = (String)jComboBox1.getSelectedItem();
-                if(name.matches(v.getVenueName())){
+                if(name.equals(v.getVenueName())){
                     vChosen = v;
                     break;
                 }
@@ -335,17 +341,21 @@ public class AdminMenu extends javax.swing.JFrame {
         try{
             boolean found = false;
             
-            for(ThirdPartyCompany c:vChosen.companies){
-                String name = (String)this.jComboBox2.getSelectedItem();
-                if(name.matches(cChosen.getName())){
-                    found = true;
+            if(vChosen.companies.size()>0){
+                for(ThirdPartyCompany c:vChosen.companies){
+                    String name = (String)this.jComboBox2.getSelectedItem();
+                    if(name.equals(c.getName())){
+                        found = true;
+                        cChosen = c;
+                        break;
+                    }
                 }
             }
             
             if(!found){
-                vChosen.addCompany(cChosen);
-                db.UpdateAdmin();
-                this.refillTextArea();
+              vChosen.addCompany(cChosen);
+              db.UpdateAdmin();
+              this.refillTextArea();  
             }else{
                 JOptionPane.showMessageDialog(this, "Already Added");
             }
@@ -384,11 +394,11 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(!this.jTextField1.getText().matches("") & !this.jTextField2.getText().matches("")& !this.jTextField3.getText().matches("")){
+        if(!this.jTextField1.getText().equals("") & !this.jTextField2.getText().equals("")& !this.jTextField3.getText().equals("")){
             
             for(Venue v:a.Venues){
                 String name = (String)jComboBox1.getSelectedItem();
-                if(name.matches(v.getVenueName())){
+                if(name.equals(v.getVenueName())){
                     vChosen = v;
                     break;
                 }
@@ -410,7 +420,7 @@ public class AdminMenu extends javax.swing.JFrame {
        
             for(Venue v:a.Venues){
                 String name = (String)jComboBox1.getSelectedItem();
-                if(name.matches(v.getVenueName())){
+                if(name.equals(v.getVenueName())){
                     vChosen = v;
                     break;
                 }
@@ -435,7 +445,7 @@ public class AdminMenu extends javax.swing.JFrame {
             
             for(Venue v:a.Venues){
                 String name = (String)jComboBox1.getSelectedItem();
-                if(name.matches(v.getVenueName())){
+                if(name.equals(v.getVenueName())){
                     vChosen = v;
                     break;
                 }
@@ -445,7 +455,7 @@ public class AdminMenu extends javax.swing.JFrame {
             
             for(ThirdPartyCompany c:a.ThirdPartyCompanies){
                 String name = (String)jComboBox2.getSelectedItem();
-                if(name.matches(c.getName())){
+                if(name.equals(c.getName())){
                     cChosen = c;
                     break;
                 }
@@ -465,7 +475,7 @@ public class AdminMenu extends javax.swing.JFrame {
        
             for(ThirdPartyCompany c:a.ThirdPartyCompanies){
                 String name = (String)jComboBox2.getSelectedItem();
-                if(name.matches(c.getName())){
+                if(name.equals(c.getName())){
                     cChosen = c;
                     break;
                 }
@@ -492,7 +502,7 @@ public class AdminMenu extends javax.swing.JFrame {
        
             for(ThirdPartyCompany c:vChosen.companies){
                 String name = (String)jComboBox2.getSelectedItem();
-                if(name.matches(c.getName())){
+                if(name.equals(c.getName())){
                     vChosen.companies.remove(c);
                     break;
                 }
