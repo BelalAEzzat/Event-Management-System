@@ -5,6 +5,8 @@
  */
 package rmi.GUI;
 
+import rmi.add_Service;
+import rmi.add_Venue;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 

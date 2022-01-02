@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rmi.GUI;
+package rmi;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import rmi.Admin;
-import rmi.Venue;
-import rmi.ThirdPartyCompany;
+import javax.swing.JTextField;
 
-public class add_Service extends javax.swing.JFrame {
 
-    AdminMenu parent;
-    public add_Service(AdminMenu parent) {
+public class create_Service extends javax.swing.JFrame {
+
+
+    public create_Service() {
         initComponents();
-        this.parent = parent;
+  
     }
 
     /**
@@ -97,65 +97,22 @@ public class add_Service extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(!this.jTextField1.getText().matches("") & !this.jTextField2.getText().matches("")){
-            boolean fail = false;
-            Admin a = Admin.getInstance();
-            for(ThirdPartyCompany c:a.ThirdPartyCompanies){
-                if(this.jTextField1.getText().matches(c.getName())){
-                    fail = true;
-                    break;
-                }
-            }
-            if(!fail){
-                String name = this.jTextField1.getText();
-                String type = this.jTextField2.getText();
-                
-                ThirdPartyCompany c = new ThirdPartyCompany(name,type);
-                a.addThirdPartyCompanies(c);
-                parent.refillCombo2();
-                dispose();
-            }else{
-                JOptionPane.showMessageDialog(this, "Name already exists");
-            }
-        }else{
-                JOptionPane.showMessageDialog(this, "Please Fill all");
-            }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(add_Service.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(add_Service.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(add_Service.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(add_Service.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new add_Service(null).setVisible(true);
-            }
-        });
+    public JButton getjButton1() {
+        return jButton1;
     }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public JTextField getjTextField2() {
+        return jTextField2;
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rmi.GUI;
+package rmi;
 
+import java.awt.Button;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
-import rmi.Admin;
-import rmi.Venue;
-import rmi.DB;
+
 public class add_Venue extends javax.swing.JFrame {
 
-    AdminMenu parent;
-    public add_Venue(AdminMenu parent) {
+    public add_Venue() {
         initComponents();
-        this.parent = parent;
     }
 
     /**
@@ -118,65 +116,25 @@ public class add_Venue extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
-        if(!this.jTextField1.getText().matches("") & !this.jTextField2.getText().matches("")& !this.jTextField3.getText().matches("")){
-            boolean fail = false;
-            Admin a = Admin.getInstance();
-            for(Venue v:a.Venues){
-                if(this.jTextField1.getText().matches(v.getVenueName())){
-                    fail = true;
-                    break;
-                }
-            }
-            if(!fail){
-                String name = this.jTextField1.getText();
-                String location = this.jTextField2.getText();
-                int capacity = Integer.valueOf(this.jTextField3.getText());
-                Venue v = new Venue(name,location,capacity);
-                a.addVenue(v);
-                parent.refillCombo();
-                dispose();
-            }else{
-                JOptionPane.showMessageDialog(this, "Name already exists");
-            }
-        }else{
-                JOptionPane.showMessageDialog(this, "Please Fill all");
-            }
+        
     }//GEN-LAST:event_SubmitActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(add_Venue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(add_Venue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(add_Venue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(add_Venue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new add_Venue(null).setVisible(true);
-            }
-        });
+    public Button getSubmit() {
+        return Submit;
     }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public JTextField getjTextField2() {
+        return jTextField2;
+    }
+
+    public JTextField getjTextField3() {
+        return jTextField3;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button Submit;
