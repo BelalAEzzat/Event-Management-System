@@ -36,7 +36,7 @@ public class LoginController {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-   try{
+    try{
                    DBinterface g = (DBinterface) r.lookup("fac2");
 
             String email = gui.getEmail_textfield().getText();

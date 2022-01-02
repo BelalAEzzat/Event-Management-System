@@ -51,6 +51,7 @@ public class LoginController {
                 if (a == true) {
                     gui.dispose();
                     UserMenu x=new UserMenu();
+                    x.setLocationRelativeTo(null);
                     x.show();
                     MainMenuController m=new MainMenuController(x, r, email, password);
 
