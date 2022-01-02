@@ -6,7 +6,6 @@
 package rmi.GUI;
 
 import java.util.ArrayList;
-import org.jdatepicker.JDateComponent;
 import rmi.Admin;
 import rmi.Reservee;
 import rmi.Venue;
