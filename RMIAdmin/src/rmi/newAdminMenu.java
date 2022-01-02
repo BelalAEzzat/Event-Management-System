@@ -3,14 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rmi.GUI;
+package rmi;
 
 import java.util.ArrayList;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-public class AdminMenu extends javax.swing.JFrame {
-    public AdminMenu() {
-        initComponents();  
+public class newAdminMenu extends javax.swing.JFrame {
+
+    public newAdminMenu() {
+        initComponents();
+
     }
 
     /**
@@ -196,7 +206,7 @@ public class AdminMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)))
                 .addGap(20, 20, 20))
@@ -251,200 +261,353 @@ public class AdminMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    
-    
-    
-    
+    public void refillCombo() {
+
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public JButton getjButton6() {
+        return jButton6;
+    }
+
+    public JButton getjButton7() {
+        return jButton7;
+    }
+
+    public JButton getjButton8() {
+        return jButton8;
+    }
+
+    public JComboBox<String> getjComboBox1() {
+        return jComboBox1;
+    }
+
+    public JComboBox<String> getjComboBox2() {
+        return jComboBox2;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public void setjButton3(JButton jButton3) {
+        this.jButton3 = jButton3;
+    }
+
+    public void setjButton4(JButton jButton4) {
+        this.jButton4 = jButton4;
+    }
+
+    public void setjButton5(JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    public void setjButton6(JButton jButton6) {
+        this.jButton6 = jButton6;
+    }
+
+    public void setjButton7(JButton jButton7) {
+        this.jButton7 = jButton7;
+    }
+
+    public void setjButton8(JButton jButton8) {
+        this.jButton8 = jButton8;
+    }
+
+    public void setjComboBox1(JComboBox<String> jComboBox1) {
+        this.jComboBox1 = jComboBox1;
+    }
+
+    public void setjComboBox2(JComboBox<String> jComboBox2) {
+        this.jComboBox2 = jComboBox2;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public void setjTextArea1(JTextArea jTextArea1) {
+        this.jTextArea1 = jTextArea1;
+    }
+
+    public void setjTextField1(JTextField jTextField1) {
+        this.jTextField1 = jTextField1;
+    }
+
+    public void setjTextField2(JTextField jTextField2) {
+        this.jTextField2 = jTextField2;
+    }
+
+    public void setjTextField3(JTextField jTextField3) {
+        this.jTextField3 = jTextField3;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JTextArea getjTextArea1() {
+        return jTextArea1;
+    }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public JTextField getjTextField2() {
+        return jTextField2;
+    }
+
+    public JTextField getjTextField3() {
+        return jTextField3;
+    }
+
+    public static int getEXIT_ON_CLOSE() {
+        return EXIT_ON_CLOSE;
+    }
+
+    public JRootPane getRootPane() {
+        return rootPane;
+    }
+
+    public boolean isRootPaneCheckingEnabled() {
+        return rootPaneCheckingEnabled;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public static int getDEFAULT_CURSOR() {
+        return DEFAULT_CURSOR;
+    }
+
+    public static int getCROSSHAIR_CURSOR() {
+        return CROSSHAIR_CURSOR;
+    }
+
+    public static int getTEXT_CURSOR() {
+        return TEXT_CURSOR;
+    }
+
+    public static int getWAIT_CURSOR() {
+        return WAIT_CURSOR;
+    }
+
+    public static int getSW_RESIZE_CURSOR() {
+        return SW_RESIZE_CURSOR;
+    }
+
+    public static int getSE_RESIZE_CURSOR() {
+        return SE_RESIZE_CURSOR;
+    }
+
+    public static int getNW_RESIZE_CURSOR() {
+        return NW_RESIZE_CURSOR;
+    }
+
+    public static int getNE_RESIZE_CURSOR() {
+        return NE_RESIZE_CURSOR;
+    }
+
+    public static int getN_RESIZE_CURSOR() {
+        return N_RESIZE_CURSOR;
+    }
+
+    public static int getS_RESIZE_CURSOR() {
+        return S_RESIZE_CURSOR;
+    }
+
+    public static int getW_RESIZE_CURSOR() {
+        return W_RESIZE_CURSOR;
+    }
+
+    public static int getE_RESIZE_CURSOR() {
+        return E_RESIZE_CURSOR;
+    }
+
+    public static int getHAND_CURSOR() {
+        return HAND_CURSOR;
+    }
+
+    public static int getMOVE_CURSOR() {
+        return MOVE_CURSOR;
+    }
+
+    public static int getNORMAL() {
+        return NORMAL;
+    }
+
+    public static int getICONIFIED() {
+        return ICONIFIED;
+    }
+
+    public static int getMAXIMIZED_HORIZ() {
+        return MAXIMIZED_HORIZ;
+    }
+
+    public static int getMAXIMIZED_VERT() {
+        return MAXIMIZED_VERT;
+    }
+
+    public static int getMAXIMIZED_BOTH() {
+        return MAXIMIZED_BOTH;
+    }
+
+    public static float getTOP_ALIGNMENT() {
+        return TOP_ALIGNMENT;
+    }
+
+    public static float getCENTER_ALIGNMENT() {
+        return CENTER_ALIGNMENT;
+    }
+
+    public static float getBOTTOM_ALIGNMENT() {
+        return BOTTOM_ALIGNMENT;
+    }
+
+    public static float getLEFT_ALIGNMENT() {
+        return LEFT_ALIGNMENT;
+    }
+
+    public static float getRIGHT_ALIGNMENT() {
+        return RIGHT_ALIGNMENT;
+    }
+
+
+    public void refillCombo2() {
+    }
+
+    public void refillTextArea() {
+
+    }
+
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
-            boolean found = false;
-            
-            if(vChosen.companies.size()>0){
-                for(ThirdPartyCompany c:vChosen.companies){
-                    String name = (String)this.jComboBox2.getSelectedItem();
-                    if(name.equals(c.getName())){
-                        found = true;
-                        cChosen = c;
-                        break;
-                    }
-                }
-            }
-            
-            if(!found){
-              vChosen.addCompany(cChosen);
-              db.UpdateAdmin();
-              this.refillTextArea();  
-            }else{
-                JOptionPane.showMessageDialog(this, "Already Added");
-            }
-                    
-                
-            
-            
-        }catch(Exception e){
-            System.out.println(e);
-        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try{
-               
-            
-            
-                new Login().setVisible(true);
-                dispose();
-            
-        
-        }catch(Exception e){
-        
-        }
+       
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        new add_Venue(this).setVisible(true);
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
         char c = evt.getKeyChar();
-       if(!Character.isDigit(c)){
-           evt.consume();
-       }
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(!this.jTextField1.getText().equals("") & !this.jTextField2.getText().equals("")& !this.jTextField3.getText().equals("")){
-            
-            for(Venue v:a.Venues){
-                String name = (String)jComboBox1.getSelectedItem();
-                if(name.equals(v.getVenueName())){
-                    vChosen = v;
-                    break;
-                }
-            }
-            int i = a.Venues.indexOf(vChosen);
-            a.Venues.get(i).setVenueName(this.jTextField1.getText());
-            a.Venues.get(i).setVenuelocation(this.jTextField2.getText());
-            a.Venues.get(i).setVenueMAxCapacity(Integer.valueOf(this.jTextField3.getText()));
-            db.UpdateAdmin();
-            
-            
-        }else{
-            JOptionPane.showMessageDialog(this, "Please Fill all");
-        }
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        try{
        
-            for(Venue v:a.Venues){
-                String name = (String)jComboBox1.getSelectedItem();
-                if(name.equals(v.getVenueName())){
-                    vChosen = v;
-                    break;
-                }
-            }
-            int i = a.Venues.indexOf(vChosen);
-            a.Venues.remove(i);
-            db.UpdateAdmin();
-            this.jTextField1.setText("");
-            this.jTextField2.setText("");
-            this.jTextField3.setText("");
-            refillCombo();
-            
-         
-            
-        }catch(Exception e){
-            
-        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        try{
-            
-            for(Venue v:a.Venues){
-                String name = (String)jComboBox1.getSelectedItem();
-                if(name.equals(v.getVenueName())){
-                    vChosen = v;
-                    break;
-                }
-            }
-            
-            int i = a.Venues.indexOf(vChosen);
-            
-            for(ThirdPartyCompany c:a.ThirdPartyCompanies){
-                String name = (String)jComboBox2.getSelectedItem();
-                if(name.equals(c.getName())){
-                    cChosen = c;
-                    break;
-                }
-            }
-         
-        }catch(Exception e){
-            System.out.println(e);
-        }
+       
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        new add_Service(this).setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        try{
        
-            for(ThirdPartyCompany c:a.ThirdPartyCompanies){
-                String name = (String)jComboBox2.getSelectedItem();
-                if(name.equals(c.getName())){
-                    cChosen = c;
-                    break;
-                }
-            }
-            int i = a.ThirdPartyCompanies.indexOf(cChosen);
-            a.ThirdPartyCompanies.remove(i);
-            
-            for(Venue v:a.Venues){
-                v.companies.remove(cChosen);
-            }
-            db.UpdateAdmin();
-            this.jTextArea1.setText("");
-            refillCombo();
-            
-         
-            
-        }catch(Exception e){
-            System.out.println(e);
-        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
        
-            for(ThirdPartyCompany c:vChosen.companies){
-                String name = (String)jComboBox2.getSelectedItem();
-                if(name.equals(c.getName())){
-                    vChosen.companies.remove(c);
-                    break;
-                }
-            }
- 
-            this.refillTextArea();
-            
-            
-            db.UpdateAdmin();
-            
-            
-            
-         
-            
-        }catch(Exception e){
-            System.out.println(e);
-        }
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -462,13 +625,13 @@ public class AdminMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newAdminMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newAdminMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newAdminMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newAdminMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -476,7 +639,7 @@ public class AdminMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminMenu().setVisible(true);
+                new newAdminMenu().setVisible(true);
             }
         });
     }
@@ -505,4 +668,6 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+
 }

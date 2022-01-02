@@ -7,6 +7,7 @@ package rmi;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 /**
  *
  * @author pc
@@ -19,5 +20,10 @@ public interface AdminInterface extends Remote{
     public String ThirdPartyCopmanygetType(int index)throws RemoteException;
     public void AddVenue(String venueName,String venuelocation, int venueMAxCapacity)throws RemoteException;
     public Void UpdateAdmin()throws RemoteException;
-    
+    public int findIndexOfVenueByname(String N)throws RemoteException;
+    public int getVenueSize() throws  RemoteException;
+    public int getThirdpartyCompanySize() throws RemoteException;
+    public ArrayList<String> getCompaniesOfVenueIndex(int i) throws RemoteException;
+    public void updateVenue(int i,String name,String location,int maxC) throws RemoteException;
+
 }
