@@ -13,6 +13,7 @@ import rmi.AdminInterface;
 import rmi.newAdminMenu;
 import rmi.newLogin;
 import rmi.AdminInterface;
+import rmi.DBinterface;
 
 /**
  *
@@ -28,7 +29,7 @@ public class LoginController {
         this.r = r;
         // This registers the button with our action listener below (the inner class)
         
-        gui.getjButton3().addActionListener(new btn3lisnter);
+        gui.getjButton3().addActionListener(new btn3lisnter());
 
     }
     public class btn3lisnter implements ActionListener{
@@ -36,15 +37,20 @@ public class LoginController {
         @Override
         public void actionPerformed(ActionEvent ae) {
    try{
+                   DBinterface g = (DBinterface) r.lookup("fac2");
+
             String email = gui.getEmail_textfield().getText();
             String password = gui.getPass_textfield().getText();
-            a = db.loginAdmin(email, password);       
-            
-            if(a !=null){
-                new AdminMenu().setVisible(true);
-                dispose();
+            boolean a=g.loginAdmin(email, password);
+            System.out.println(a);
+            if(a ==true){
+                gui.dispose();
+                newAdminMenu n=new newAdminMenu();
+                n.show();
+                AdminMainMenuController gui_controller = new AdminMainMenuController(n, r);
+                
             }else{
-                JOptionPane.showMessageDialog(this, "Wrong Username/Password");
+                JOptionPane.showMessageDialog(gui, "Wrong Username/Password");
             }
         
         }catch(Exception e){
