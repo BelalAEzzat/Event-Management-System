@@ -24,7 +24,7 @@ import rmi.newLogin;
 import rmi.UserMenu;
 import rmi.Event_Reservation;
 import rmi.ViewEvents;
-
+import rmi.ReserveeInterface;
 /**
  * /**
  *
@@ -41,39 +41,19 @@ public class ViewEventsController {
         this.r = r;
         this.email=Email;
         this.Password=password;
+        refill();
         // This registers the button with our action listener below (the inner class)
    
     }
 
     public void refill(){
     try {
-            DBinterface g = (DBinterface) r.lookup("fac2");
-            ArrayList<String> Vnames = new ArrayList<String>();
-            for (int i = 0; i < gui.getjComboBox1().getItemCount(); i++) {
-                Vnames.add(gui.getjComboBox1().getItemAt(i));
-            }
-
-            for (int j = 0; j < g.getVenueSize(); j++) {
-                if (!Vnames.contains(g.getVenueName(j))) {
-                    gui.getjComboBox1().addItem(g.getVenueName(j));
-                }
-            }
-
-            ArrayList<String> Tnames = new ArrayList<String>();
-            for (int i = 0; i < gui.getjComboBox2().getItemCount(); i++) {
-                Tnames.add(gui.getjComboBox2().getItemAt(i));
-            }
-            for (int j = 0; j < g.getThirdpartyCompanySize(); j++) {
-                if (!Tnames.contains(g.ThirdPartyCopmanygetName(j))) {
-                    gui.getjComboBox2().addItem(g.ThirdPartyCopmanygetName(j));
-                }
-            }
-
-            int i = g.findIndexOfVenueByname((String) gui.getjComboBox1().getSelectedItem());
-            gui.getjTextField1().setText(g.getVenueName(i));
-            gui.getjTextField2().setText(g.getVenuelocation(i));
-            gui.getjTextField3().setText(String.valueOf(g.getVenueMAxCapacity(i)));
-
+            ReserveeInterface g = (ReserveeInterface) r.lookup("fac3");
+            ArrayList<Integer> VID = new ArrayList<Integer>();
+            g.Login(email, Password);
+            VID=g.getEventsID();
+            System.out.println(VID);
+          
         } catch (Exception e) {
             System.out.println(e);
         }

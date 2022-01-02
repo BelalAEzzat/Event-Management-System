@@ -20,6 +20,30 @@ public class Reservee extends User {
         requestedEvents = new ArrayList<Event_Request>();
         upcomingEvents = new ArrayList<Event>();
     }
+
+    public ArrayList<Event> getHostedEvents() {
+        return hostedEvents;
+    }
+
+    public ArrayList<Event_Request> getRequestedEvents() {
+        return requestedEvents;
+    }
+
+    public ArrayList<Event> getUpcomingEvents() {
+        return upcomingEvents;
+    }
+
+    public void setHostedEvents(ArrayList<Event> hostedEvents) {
+        this.hostedEvents = hostedEvents;
+    }
+
+    public void setRequestedEvents(ArrayList<Event_Request> requestedEvents) {
+        this.requestedEvents = requestedEvents;
+    }
+
+    public void setUpcomingEvents(ArrayList<Event> upcomingEvents) {
+        this.upcomingEvents = upcomingEvents;
+    }
    
    public void requestEvent(Event event){
    

@@ -23,6 +23,7 @@ public class EvenManagmentSystem {
             // My remote object [Skeleton]
             AdminInterface facade = new AdminFacade();
             DBinterface facade2 = new DBfacade();
+            ReserveeInterface facade3=new ClientFacade();
 
             // My RMI Registry
             Registry registry = LocateRegistry.createRegistry(1099);
@@ -30,6 +31,8 @@ public class EvenManagmentSystem {
             //Add my object to the RMI Registry
             registry.bind("fac", facade);
             registry.bind("fac2", facade2);
+            registry.bind("fac3", facade3);
+
             System.out.println("My facade is ready...");
         } catch (Exception ex) {
             System.out.println("Exception occured here ");

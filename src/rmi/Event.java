@@ -120,6 +120,14 @@ public class Event implements subject {
         return feedback;
     }
 
+    public Date getEventDate() {
+        return eventDate;
+    }
+
+    public List<Observer> getObservers() {
+        return observers;
+    }
+
     public void invite() {
         boolean existuser = false;
         int invitedUserIndex = -1;
