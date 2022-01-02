@@ -147,7 +147,7 @@ public class AdminMainMenuController {
                 g.updateVenue(i, name, location, maxCapacity);
 
                 System.out.println("Saved!");
-
+                 JOptionPane.showMessageDialog(gui, "saved successfully");
             } catch (Exception e) {
                 System.out.println(e);
             }
