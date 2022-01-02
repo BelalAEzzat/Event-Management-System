@@ -19,5 +19,10 @@ public interface AdminInterface extends Remote{
     public String ThirdPartyCopmanygetType(int index)throws RemoteException;
     public void AddVenue(String venueName,String venuelocation, int venueMAxCapacity)throws RemoteException;
     public Void UpdateAdmin()throws RemoteException;
+    public int findIndexOfVenueByname(String N)throws RemoteException;
+    public int getVenueSize() throws  RemoteException;
+    public int getThirdpartyCompanySize() throws RemoteException;
     
+
+
 }
