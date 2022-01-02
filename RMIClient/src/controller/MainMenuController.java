@@ -17,13 +17,14 @@ import javax.swing.JOptionPane;
 import rmi.DBinterface;
 import rmi.newLogin ;
 import rmi.UserMenu;
+import rmi.Event_Reservation;
 /**
 /**
  *
  * @author pc
  */
 public class MainMenuController {
-    public UserMenu gui;
+   public UserMenu gui;
    public Registry r;
    public String email;
    public String Password;
@@ -42,13 +43,17 @@ public class MainMenuController {
 
   
 
-    private static class ReserveEvent implements ActionListener {
+    private class ReserveEvent implements ActionListener {
 
        
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            gui.dispose();
+            Event_Reservation n=new Event_Reservation();
+            n.setLocationRelativeTo(null);
+            n.setVisible(true);
+            EventReservationController gui_controller = new EventReservationController(n, r);
         }
     }
 
@@ -62,7 +67,7 @@ public class MainMenuController {
       
     }
 
-    private static class sendInvite implements ActionListener {
+    private class sendInvite implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
@@ -72,7 +77,7 @@ public class MainMenuController {
         
     }
 
-    private static class ViewInvites implements ActionListener {
+    private class ViewInvites implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
@@ -81,7 +86,7 @@ public class MainMenuController {
 
     }
 
-    private static class ViewNotificatios implements ActionListener {
+    private class ViewNotificatios implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
@@ -91,7 +96,7 @@ public class MainMenuController {
  
     }
 
-    private static class Logout implements ActionListener {
+    private class Logout implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
