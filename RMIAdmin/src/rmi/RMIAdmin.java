@@ -11,7 +11,7 @@ import controller.LoginController;
 public class RMIAdmin {
 
     public static void main(String[] args) throws RemoteException{
-         newLogin gui = new newLogin();
+        newLogin gui = new newLogin();
         gui.setLocationRelativeTo(null); // This makes the window appears centered
         gui.setVisible(true); // This shows the gui
         

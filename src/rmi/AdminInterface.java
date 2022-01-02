@@ -25,5 +25,12 @@ public interface AdminInterface extends Remote{
     public int getThirdpartyCompanySize() throws RemoteException;
     public ArrayList<String> getCompaniesOfVenueIndex(int i) throws RemoteException;
     public void updateVenue(int i,String name,String location,int maxC) throws RemoteException;
+    public int addCompanyByVenueIndex(int i,String Name) throws RemoteException;
+    public void addCompany(String Name,String type) throws RemoteException;
+    public void removeVenue(int i) throws RemoteException;
+    public void removeCompany(int i) throws RemoteException;
+    public String getCompanybyIndex(int i) throws RemoteException;
+    public int findIndexofCompanyByName(String name) throws RemoteException;
+    public void removeCompanyByIndexs(int i,int j) throws RemoteException;
 
 }

@@ -46,7 +46,8 @@ public class LoginController {
             if(a ==true){
                 gui.dispose();
                 newAdminMenu n=new newAdminMenu();
-                n.show();
+                n.setLocationRelativeTo(null);
+                n.setVisible(true);
                 AdminMainMenuController gui_controller = new AdminMainMenuController(n, r);
                 
             }else{
