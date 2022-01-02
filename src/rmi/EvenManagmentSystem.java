@@ -15,19 +15,24 @@ public class EvenManagmentSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        DB db = DB.getinstance();
+        Employee e = new Employee(0, "aas", "asd", "emp", "emp");
+        db.insertEmployee(e);
+
         try {
             // My remote object [Skeleton]
-            PaymentMethod d=new PaymentMethod(0, 0, "name");
-            PaymentMethodInterface c = new RemoteProxy(d);
+            AdminInterface facade = new AdminFacade();
+            DBinterface facade2 = new DBfacade();
+
             // My RMI Registry
-            Registry registry = LocateRegistry.createRegistry(500);
-            
+            Registry registry = LocateRegistry.createRegistry(1099);
+
             //Add my object to the RMI Registry
-            registry.bind("calc", c);
-            System.out.println("My calculator is ready...");   
+            registry.bind("fac", facade);
+            registry.bind("fac2", facade2);
+            System.out.println("My facade is ready...");
         } catch (Exception ex) {
-           System.out.println("Exception occured");
-        }   
+            System.out.println("Exception occured here ");
         }
-    
+    }
 }

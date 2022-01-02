@@ -20,7 +20,7 @@ public class Venue {
     private ArrayList<ThirdPartyCompany> companies;
     
     
-    public Venue(String venuelocation, String venueName, int venueMAxCapacity) {
+    public Venue(String venueName,String venuelocation, int venueMAxCapacity) {
         this.venuelocation = venuelocation;
         this.venueName = venueName;
         this.venueMAxCapacity = venueMAxCapacity;

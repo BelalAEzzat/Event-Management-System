@@ -11,6 +11,11 @@ package rmi;
  */
 public class ThirdPartyCompany {
     private String name;
+
+    public ThirdPartyCompany(String name, String Type) {
+        this.name = name;
+        this.Type = Type;
+    }
     private String Type;
 
     public String getName() {

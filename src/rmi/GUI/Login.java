@@ -4,18 +4,22 @@
  * and open the template in the editor.
  */
 package rmi.GUI;
-
-/**
- *
- * @author Zew
- */
+import javax.swing.JOptionPane;
+import rmi.DB;
+import rmi.Reservee;
+import rmi.Visitor;
+import rmi.Admin;
 public class Login extends javax.swing.JFrame {
-
+    static DB db;
+    Reservee r;
+    Visitor v;
+    Admin a;
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        db = DB.getinstance();
     }
 
     /**
@@ -30,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        user_textfield = new javax.swing.JTextField();
+        email_textfield = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         pass_textfield = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -47,16 +51,26 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("Welcome to Event4You");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Username:");
+        jLabel2.setText("Email:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Password:");
 
         jButton1.setText("Client");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Register");
 
         jButton3.setText("Admin");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Login As:");
@@ -80,8 +94,8 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pass_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(user_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(email_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -110,7 +124,7 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(user_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(email_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pass_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(38, 38, 38)
@@ -126,6 +140,42 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            String email = this.email_textfield.getText();
+            String password = this.pass_textfield.getText();
+            r = db.LoginReservee(email, password);       
+            v = db.loginVisitor(email, password);
+            if(r !=null & v !=null){
+                new UserMenu(r,v).setVisible(true);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Wrong Username/Password");
+            }
+        
+        }catch(Exception e){
+        
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try{
+            String email = this.email_textfield.getText();
+            String password = this.pass_textfield.getText();
+            a = db.loginAdmin(email, password);       
+            
+            if(a !=null){
+                new AdminMenu().setVisible(true);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Wrong Username/Password");
+            }
+        
+        }catch(Exception e){
+            System.out.println(e);;
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,11 +208,18 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
+                Reservee r = new Reservee("user","user","user");
+                Visitor v = new Visitor("user","user","user");
+                
+                db.insertreservee(r);
+                db.insertVisitor(v);
+                Admin.getInstance();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField email_textfield;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -173,6 +230,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JTextField pass_textfield;
-    private javax.swing.JTextField user_textfield;
     // End of variables declaration//GEN-END:variables
 }
