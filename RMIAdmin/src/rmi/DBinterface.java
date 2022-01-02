@@ -19,4 +19,6 @@ public interface DBinterface extends Remote {
     public boolean loginEmployee(String Email, String password) throws RemoteException;
     public boolean loginClient(String Email, String password) throws RemoteException;
      public void registorEmployee(String Email, String password) throws RemoteException;
+         public void registorClient(String Email, String password) throws RemoteException;
+
 }

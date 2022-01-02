@@ -33,10 +33,10 @@ public class DBfacade extends UnicastRemoteObject implements DBinterface {
     @Override
     public boolean loginEmployee(String Email, String password) throws RemoteException {
         if (db.loginemEmployee(Email, password) != null) {
-               System.out.println("true");
-            
+            System.out.println("true");
+
             return true;
-         
+
         }
         return false;
     }
@@ -51,8 +51,16 @@ public class DBfacade extends UnicastRemoteObject implements DBinterface {
 
     @Override
     public void registorEmployee(String Email, String password) throws RemoteException {
-        Employee e=new Employee(0, "Main", "Null", password, Email);
+        Employee e = new Employee(0, "Main", "Null", password, Email);
         db.insertEmployee(e);
+    }
+
+    @Override
+    public void registorClient(String Email, String password) throws RemoteException {
+        Reservee r = new Reservee("name", password, Email);
+        Visitor V = new Visitor("name", password, Email);
+        db.insertreservee(r);
+        db.insertVisitor(V);
     }
 
 }
