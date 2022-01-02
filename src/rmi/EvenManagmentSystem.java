@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package rmi;
-
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+
 
 public class EvenManagmentSystem {
 
@@ -16,9 +16,21 @@ public class EvenManagmentSystem {
      */
     public static void main(String[] args) {
         
-        DB db = DB.getinstance();
-       ThirdPartyCompany a=new ThirdPartyCompany("name", "type");
-       db.insertthirdPartycompany(a);
-        System.out.println();
+       try {
+            // My remote object [Skeleton]
+            AdminInterface c = Admin.getInstance();
+            
+            // My RMI Registry
+            Registry registry = LocateRegistry.createRegistry(2000);
+            
+            //Add my object to the RMI Registry
+            registry.bind("calc", c);
+            System.out.println("My calculator is ready...");   
+        } catch (Exception ex) {
+           System.out.println("Exception occured");
+        }      
+     // Here we create our remote object
+      
+        
     }
 }

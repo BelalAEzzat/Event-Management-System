@@ -13,6 +13,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,7 +67,7 @@ public class DB {
 
     }
 
-    public void insertAdmin(Admin s) {
+    public void insertAdmin(Admin s) throws RemoteException {
         ArrayList<Document> docs = admin.find().into(new ArrayList<Document>());
         if ((docs.size() > 0)) {
             admin.deleteOne(Filters.eq("Email_Address", s.getEmail_Address()));
@@ -178,13 +179,11 @@ public class DB {
         return true;
     }
 
-    public Admin loginAdmin(String Email, String Password) {
+    public Admin loginAdmin(String Email, String Password) throws RemoteException {
         ArrayList<Document> docs = admin.find(Filters.eq("Email_Address", Email)).into(new ArrayList<Document>());
         if (docs.size() > 0) {
             String jsonResult = docs.get(0).toJson();
             Admin a = gson.fromJson(jsonResult, Admin.class);
-            System.out.println(a.getPassword());
-            System.out.println(Password);
             if (a.getPassword().equals(Password)) {
                 return a;
             }
@@ -257,7 +256,10 @@ public class DB {
 
     }
 
-    public void UpdateAdmin() {
+    /**
+     *
+     */
+    public void UpdateAdmin() throws RemoteException {
         Admin s = Admin.getInstance();
         ArrayList<Document> docs = admin.find().into(new ArrayList<Document>());
         if ((docs.size() > 0)) {
@@ -321,5 +323,7 @@ public class DB {
         PaymentMethod.insertOne(Document.parse(gson.toJson(s)));
         System.out.println("Employee inserted.");
     }
+
+
 
 }
