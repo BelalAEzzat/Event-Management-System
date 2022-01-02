@@ -37,7 +37,7 @@ public class MainMenuController {
         gui.getjButton2().addActionListener(new sendInvite());
         gui.getjButton3().addActionListener(new ViewInvites());
         gui.getjButton4().addActionListener(new ViewNotificatios());
-        gui.getjButton6().addActionListener(new Logout());
+        gui.getjButton6().addActionListener(new Logout(gui,r));
     }
 
   
@@ -92,10 +92,18 @@ public class MainMenuController {
     }
 
     private static class Logout implements ActionListener {
-
+         public UserMenu gui;
+         public Registry r;
+         public  Logout(UserMenu gui,Registry r){
+         this.gui=gui;
+         this.r=r;
+         }
         @Override
         public void actionPerformed(ActionEvent ae) {
-            
+            gui.dispose();
+            newLogin n=new newLogin();
+            n.show();
+            LoginController a=new LoginController(n, r);
 
         }
 
