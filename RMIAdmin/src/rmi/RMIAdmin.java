@@ -6,11 +6,12 @@ import java.rmi.registry.Registry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import controller.AdminMainMenuController;
+import controller.LoginController;
 
 public class RMIAdmin {
 
     public static void main(String[] args) throws RemoteException{
-         newAdminMenu gui = new newAdminMenu();
+         newLogin gui = new newLogin();
         gui.setLocationRelativeTo(null); // This makes the window appears centered
         gui.setVisible(true); // This shows the gui
         
@@ -19,7 +20,7 @@ public class RMIAdmin {
         
         // we create a new object from the controller and we pass it the
         // gui object along with the registry object
-        AdminMainMenuController gui_controller = new AdminMainMenuController(gui, r);
+        LoginController gui_controller = new LoginController(gui, r);
         
     }
 }

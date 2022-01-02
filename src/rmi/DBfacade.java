@@ -25,7 +25,7 @@ public class DBfacade extends UnicastRemoteObject implements DBinterface {
     @Override
     public boolean loginAdmin(String Email, String password) throws RemoteException {
         db.loginAdmin(Email, password);
-        if (!db.loginAdmin(Email, password)==null){
+        if (!(db.loginAdmin(Email, password)==null)){
         return true;
         }else{
         return false;}

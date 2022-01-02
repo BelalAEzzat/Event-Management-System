@@ -5,10 +5,15 @@
  */
 package rmi;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.rmi.RemoteException;
+
 /**
  *
  * @author pc
  */
-public interface DBinterface {
-    public boolean loginAdmin(String Email, String password);
+public interface DBinterface extends Remote {
+    public boolean loginAdmin(String Email, String password) throws RemoteException ;
 }
