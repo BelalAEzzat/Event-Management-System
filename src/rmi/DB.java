@@ -138,7 +138,6 @@ public class DB {
     }
 
     public boolean insertreservee(Reservee s) {
-        ArrayList<Venue> result = new ArrayList();
         ArrayList<Document> docs = reservee.find().into(new ArrayList<Document>());
         for (int i = 0; i < docs.size(); i++) {
             String jsonResult = docs.get(i).toJson();

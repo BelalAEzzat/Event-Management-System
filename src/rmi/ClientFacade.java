@@ -26,11 +26,9 @@ public class ClientFacade extends UnicastRemoteObject implements ReserveeInterfa
 
     @Override
     public ArrayList<Integer> getEventsID() throws RemoteException {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        for (int i = 0; i < r.getUpcomingEvents().size(); i++) {
-            a.add(r.getUpcomingEvents().get(i).getEventID());
-        }
-        return a;
+       
+       
+        return r.getUpcomingEvents();
     }
 
     @Override

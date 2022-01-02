@@ -10,40 +10,42 @@ import java.util.ArrayList;
 
 public class Reservee extends User {
 
-   public ArrayList<Event> hostedEvents;
-   public ArrayList<Event_Request> requestedEvents;
-   public ArrayList<Event> upcomingEvents;
+   public ArrayList<Integer> hostedEvents;
+   public ArrayList<Integer> requestedEvents;
+   public ArrayList<Integer > upcomingEvents;
 
    public Reservee(String Name, String Password, String Email_Address) {
         super(Name, Password, Email_Address);
-        hostedEvents = new ArrayList<Event>();
-        requestedEvents = new ArrayList<Event_Request>();
-        upcomingEvents = new ArrayList<Event>();
+        hostedEvents = new ArrayList<Integer>();
+        requestedEvents = new ArrayList<Integer>();
+        upcomingEvents = new ArrayList<Integer>();
     }
 
-    public ArrayList<Event> getHostedEvents() {
+    public ArrayList<Integer> getHostedEvents() {
         return hostedEvents;
     }
 
-    public ArrayList<Event_Request> getRequestedEvents() {
+    public ArrayList<Integer> getRequestedEvents() {
         return requestedEvents;
     }
 
-    public ArrayList<Event> getUpcomingEvents() {
+    public ArrayList<Integer> getUpcomingEvents() {
         return upcomingEvents;
     }
 
-    public void setHostedEvents(ArrayList<Event> hostedEvents) {
+    public void setHostedEvents(ArrayList<Integer> hostedEvents) {
         this.hostedEvents = hostedEvents;
     }
 
-    public void setRequestedEvents(ArrayList<Event_Request> requestedEvents) {
+    public void setRequestedEvents(ArrayList<Integer> requestedEvents) {
         this.requestedEvents = requestedEvents;
     }
 
-    public void setUpcomingEvents(ArrayList<Event> upcomingEvents) {
+    public void setUpcomingEvents(ArrayList<Integer> upcomingEvents) {
         this.upcomingEvents = upcomingEvents;
     }
+
+
    
    public void requestEvent(Event event){
    
