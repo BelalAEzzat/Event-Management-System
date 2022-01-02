@@ -7,40 +7,10 @@ package rmi.GUI;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import rmi.Admin;
-import rmi.Venue;
-import rmi.ThirdPartyCompany;
-import rmi.DB;
+
 public class AdminMenu extends javax.swing.JFrame {
-    static DB db;
-    Venue vChosen = null;
-    Admin a;
-    ThirdPartyCompany cChosen = null;
     public AdminMenu() {
-        initComponents();
-        
-        db = DB.getinstance();
-        this.a =Admin.getInstance();
-        try{
-            //Venues;
-            Venue temp = new Venue("shop","damnhour",10);
-            //a.addVenue(temp);
-            refillCombo();
-            this.jTextField1.setText(a.Venues.get(0).getVenueName());
-            this.jTextField2.setText(a.Venues.get(0).getVenuelocation());
-            this.jTextField3.setText(String.valueOf(a.Venues.get(0).getVenueMAxCapacity()));
-            
-            for(Venue v:a.Venues){
-                String name = (String)jComboBox1.getSelectedItem();
-                if(name.equals(v.getVenueName())){
-                    vChosen = v;
-                    break;
-                }
-            }
-            
-        }catch(Exception e){
-            
-        }
+        initComponents();  
     }
 
     /**
@@ -281,60 +251,13 @@ public class AdminMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void refillCombo(){
-        db = DB.getinstance();
-        this.a =Admin.getInstance();
-        this.jComboBox1.removeAllItems();
-        this.jComboBox2.removeAllItems();
-        for(Venue v:a.Venues){
-                this.jComboBox1.addItem(v.getVenueName());  
-            }
-        for(ThirdPartyCompany c: Admin.oneAdmin.getThirdPartyCompanies()){
-                   this.jComboBox2.addItem(c.getName());
-        }
-    }
-    
-    public void refillCombo2(){
-        db = DB.getinstance();
-        this.a =Admin.getInstance();
-        
-        this.jComboBox2.removeAllItems();
-        
-        for(ThirdPartyCompany c: Admin.oneAdmin.getThirdPartyCompanies()){
-                   this.jComboBox2.addItem(c.getName());
-        }
-    }
     
     
-    public void refillTextArea(){
-        this.jTextArea1.setText("");
-        for(ThirdPartyCompany c:vChosen.companies){
-            this.jTextArea1.append(c.getName()+ " | "+ c.getType()+"\n");
-        }
     
     
-    }
     
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        try{
-            
-            for(Venue v:a.Venues){
-                String name = (String)jComboBox1.getSelectedItem();
-                if(name.equals(v.getVenueName())){
-                    vChosen = v;
-                    break;
-                }
-            }
-            
-            int i = a.Venues.indexOf(vChosen);
-            this.jTextField1.setText(a.Venues.get(i).getVenueName());
-            this.jTextField2.setText(a.Venues.get(i).getVenuelocation());
-            this.jTextField3.setText(String.valueOf(a.Venues.get(i).getVenueMAxCapacity()));
-            this.refillTextArea();
-         
-        }catch(Exception e){
-            System.out.println(e);
-        }
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
