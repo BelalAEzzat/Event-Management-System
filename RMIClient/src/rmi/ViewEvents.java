@@ -3,7 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rmi.GUI;
+package rmi;
+
+import javax.accessibility.AccessibleContext;
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JRootPane;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,6 +28,363 @@ public class ViewEvents extends javax.swing.JFrame {
     public ViewEvents() {
         initComponents();
     }
+
+    public Box.Filler getFiller1() {
+        return filler1;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public JButton getjButton6() {
+        return jButton6;
+    }
+
+    public JButton getjButton7() {
+        return jButton7;
+    }
+
+    public JButton getjButton8() {
+        return jButton8;
+    }
+
+    public JButton getjButton9() {
+        return jButton9;
+    }
+
+    public JComboBox<String> getjComboBox1() {
+        return jComboBox1;
+    }
+
+    public JComboBox<String> getjComboBox2() {
+        return jComboBox2;
+    }
+
+    public JComboBox<String> getjComboBox3() {
+        return jComboBox3;
+    }
+
+    public JComboBox<String> getjComboBox4() {
+        return jComboBox4;
+    }
+
+    public JComboBox<String> getjComboBox5() {
+        return jComboBox5;
+    }
+
+    public JComboBox<String> getjComboBox6() {
+        return jComboBox6;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    public JLabel getjLabel11() {
+        return jLabel11;
+    }
+
+    public JLabel getjLabel12() {
+        return jLabel12;
+    }
+
+    public JLabel getjLabel13() {
+        return jLabel13;
+    }
+
+    public JLabel getjLabel14() {
+        return jLabel14;
+    }
+
+    public JLabel getjLabel15() {
+        return jLabel15;
+    }
+
+    public JLabel getjLabel16() {
+        return jLabel16;
+    }
+
+    public JLabel getjLabel17() {
+        return jLabel17;
+    }
+
+    public JLabel getjLabel18() {
+        return jLabel18;
+    }
+
+    public JLabel getjLabel19() {
+        return jLabel19;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel20() {
+        return jLabel20;
+    }
+
+    public JLabel getjLabel21() {
+        return jLabel21;
+    }
+
+    public JLabel getjLabel22() {
+        return jLabel22;
+    }
+
+    public JLabel getjLabel23() {
+        return jLabel23;
+    }
+
+    public JLabel getjLabel24() {
+        return jLabel24;
+    }
+
+    public JLabel getjLabel25() {
+        return jLabel25;
+    }
+
+    public JLabel getjLabel26() {
+        return jLabel26;
+    }
+
+    public JLabel getjLabel27() {
+        return jLabel27;
+    }
+
+    public JLabel getjLabel28() {
+        return jLabel28;
+    }
+
+    public JLabel getjLabel29() {
+        return jLabel29;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public JLabel getjLabel30() {
+        return jLabel30;
+    }
+
+    public JLabel getjLabel31() {
+        return jLabel31;
+    }
+
+    public JLabel getjLabel32() {
+        return jLabel32;
+    }
+
+    public JLabel getjLabel33() {
+        return jLabel33;
+    }
+
+    public JLabel getjLabel34() {
+        return jLabel34;
+    }
+
+    public JLabel getjLabel35() {
+        return jLabel35;
+    }
+
+    public JLabel getjLabel36() {
+        return jLabel36;
+    }
+
+    public JLabel getjLabel37() {
+        return jLabel37;
+    }
+
+    public JLabel getjLabel38() {
+        return jLabel38;
+    }
+
+    public JLabel getjLabel39() {
+        return jLabel39;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public JSeparator getjSeparator1() {
+        return jSeparator1;
+    }
+
+    public JSeparator getjSeparator2() {
+        return jSeparator2;
+    }
+
+    public JTextArea getjTextArea2() {
+        return jTextArea2;
+    }
+
+    public JTextArea getjTextArea3() {
+        return jTextArea3;
+    }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public static int getEXIT_ON_CLOSE() {
+        return EXIT_ON_CLOSE;
+    }
+
+    public JRootPane getRootPane() {
+        return rootPane;
+    }
+
+    public boolean isRootPaneCheckingEnabled() {
+        return rootPaneCheckingEnabled;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public static int getDEFAULT_CURSOR() {
+        return DEFAULT_CURSOR;
+    }
+
+    public static int getCROSSHAIR_CURSOR() {
+        return CROSSHAIR_CURSOR;
+    }
+
+    public static int getTEXT_CURSOR() {
+        return TEXT_CURSOR;
+    }
+
+    public static int getWAIT_CURSOR() {
+        return WAIT_CURSOR;
+    }
+
+    public static int getSW_RESIZE_CURSOR() {
+        return SW_RESIZE_CURSOR;
+    }
+
+    public static int getSE_RESIZE_CURSOR() {
+        return SE_RESIZE_CURSOR;
+    }
+
+    public static int getNW_RESIZE_CURSOR() {
+        return NW_RESIZE_CURSOR;
+    }
+
+    public static int getNE_RESIZE_CURSOR() {
+        return NE_RESIZE_CURSOR;
+    }
+
+    public static int getN_RESIZE_CURSOR() {
+        return N_RESIZE_CURSOR;
+    }
+
+    public static int getS_RESIZE_CURSOR() {
+        return S_RESIZE_CURSOR;
+    }
+
+    public static int getW_RESIZE_CURSOR() {
+        return W_RESIZE_CURSOR;
+    }
+
+    public static int getE_RESIZE_CURSOR() {
+        return E_RESIZE_CURSOR;
+    }
+
+    public static int getHAND_CURSOR() {
+        return HAND_CURSOR;
+    }
+
+    public static int getMOVE_CURSOR() {
+        return MOVE_CURSOR;
+    }
+
+    public static int getNORMAL() {
+        return NORMAL;
+    }
+
+    public static int getICONIFIED() {
+        return ICONIFIED;
+    }
+
+    public static int getMAXIMIZED_HORIZ() {
+        return MAXIMIZED_HORIZ;
+    }
+
+    public static int getMAXIMIZED_VERT() {
+        return MAXIMIZED_VERT;
+    }
+
+    public static int getMAXIMIZED_BOTH() {
+        return MAXIMIZED_BOTH;
+    }
+
+    public static float getTOP_ALIGNMENT() {
+        return TOP_ALIGNMENT;
+    }
+
+    public static float getCENTER_ALIGNMENT() {
+        return CENTER_ALIGNMENT;
+    }
+
+    public static float getBOTTOM_ALIGNMENT() {
+        return BOTTOM_ALIGNMENT;
+    }
+
+    public static float getLEFT_ALIGNMENT() {
+        return LEFT_ALIGNMENT;
+    }
+
+    public static float getRIGHT_ALIGNMENT() {
+        return RIGHT_ALIGNMENT;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,7 +459,11 @@ public class ViewEvents extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("back");
 
@@ -100,15 +472,16 @@ public class ViewEvents extends javax.swing.JFrame {
 
         jLabel2.setText("Current Event");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel4.setText("Requested Events");
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setText("Invited Events");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.setToolTipText("");
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Visitor");
 
@@ -225,8 +598,6 @@ public class ViewEvents extends javax.swing.JFrame {
 
         jLabel37.setText("jLabel11");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel38.setText("Hosted Events");
 
         jLabel39.setText("Feedback of user");
@@ -234,8 +605,6 @@ public class ViewEvents extends javax.swing.JFrame {
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
         jScrollPane3.setViewportView(jTextArea3);
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setAlignmentX(50.0F);
@@ -526,6 +895,14 @@ public class ViewEvents extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox4ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -10,15 +10,15 @@ import java.util.ArrayList;
 
 public class Reservee extends User {
 
-   public ArrayList<Integer> hostedEvents;
-   public ArrayList<Integer> requestedEvents;
-   public ArrayList<Integer> upcomingEvents;
+   public ArrayList<Event> hostedEvents;
+   public ArrayList<Event_Request> requestedEvents;
+   public ArrayList<Event> upcomingEvents;
 
    public Reservee(String Name, String Password, String Email_Address) {
         super(Name, Password, Email_Address);
-        hostedEvents = new ArrayList<Integer>();
-        requestedEvents = new ArrayList<Integer>();
-        upcomingEvents = new ArrayList<Integer>();
+        hostedEvents = new ArrayList<Event>();
+        requestedEvents = new ArrayList<Event_Request>();
+        upcomingEvents = new ArrayList<Event>();
     }
    
    public void requestEvent(Event event){

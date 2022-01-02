@@ -18,6 +18,7 @@ import rmi.DBinterface;
 import rmi.newLogin;
 import rmi.UserMenu;
 import rmi.Event_Reservation;
+import rmi.ViewEvents;
 
 /**
  * /**
@@ -25,6 +26,7 @@ import rmi.Event_Reservation;
  * @author pc
  */
 public class MainMenuController {
+
     public UserMenu gui;
     public Registry r;
     public String email;
@@ -33,11 +35,11 @@ public class MainMenuController {
     public MainMenuController(UserMenu gui, Registry r, String Email, String password) {
         this.gui = gui;
         this.r = r;
+        this.email = Email;
+            this.Password = password;
         // This registers the button with our action listener below (the inner class)
         gui.getjButton1().addActionListener(new ReserveEvent());
-        gui.getjButton5().addActionListener(new ViewEvent());
-        gui.getjButton2().addActionListener(new sendInvite());
-        gui.getjButton3().addActionListener(new ViewInvites());
+        gui.getjButton5().addActionListener(new ViewEvent(gui, r,email,Password));
         gui.getjButton4().addActionListener(new ViewNotificatios());
         gui.getjButton6().addActionListener(new Logout(gui, r));
     }
@@ -56,30 +58,25 @@ public class MainMenuController {
 
     private static class ViewEvent implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods,
-                                                                           // choose Tools | Templates.
+        public UserMenu gui;
+        public Registry r;
+        public String Email;
+        public String Password;
+
+        public ViewEvent(UserMenu gui, Registry r, String Email, String Password) {
+            this.gui = gui;
+            this.r = r;
+            this.Email = Email;
+            this.Password = Password;
         }
 
-    }
-
-    private class sendInvite implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent ae) {
-            throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods,
-                                                                           // choose Tools | Templates.
-        }
+            gui.dispose();
+            ViewEvents n = new ViewEvents();
+            n.show();
+            ViewEventsController a = new ViewEventsController(gui, r, Email, Password);
 
-    }
-
-    private class ViewInvites implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods,
-                                                                           // choose Tools | Templates.
         }
 
     }
@@ -89,12 +86,13 @@ public class MainMenuController {
         @Override
         public void actionPerformed(ActionEvent ae) {
             throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods,
-                                                                           // choose Tools | Templates.
+            // choose Tools | Templates.
         }
 
     }
 
     private static class Logout implements ActionListener {
+
         public UserMenu gui;
         public Registry r;
 
