@@ -16,21 +16,18 @@ public class EvenManagmentSystem {
      */
     public static void main(String[] args) {
         
-       try {
+      try {
             // My remote object [Skeleton]
-            AdminInterface c = Admin.getInstance();
+            AdminInterface facade = new AdminFacade();
             
             // My RMI Registry
-            Registry registry = LocateRegistry.createRegistry(2000);
+            Registry registry = LocateRegistry.createRegistry(1099);
             
             //Add my object to the RMI Registry
-            registry.bind("calc", c);
-            System.out.println("My calculator is ready...");   
+            registry.bind("fac", facade);
+            System.out.println("My facade is ready...");   
         } catch (Exception ex) {
-           System.out.println("Exception occured");
-        }      
-     // Here we create our remote object
-      
-        
-    }
+           System.out.println("Exception occured here ");
+        }   
+}
 }

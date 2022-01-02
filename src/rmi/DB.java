@@ -179,11 +179,13 @@ public class DB {
         return true;
     }
 
-    public Admin loginAdmin(String Email, String Password) throws RemoteException {
+    public Admin loginAdmin(String Email, String Password) {
         ArrayList<Document> docs = admin.find(Filters.eq("Email_Address", Email)).into(new ArrayList<Document>());
         if (docs.size() > 0) {
             String jsonResult = docs.get(0).toJson();
             Admin a = gson.fromJson(jsonResult, Admin.class);
+            System.out.println(a.getPassword());
+            System.out.println(Password);
             if (a.getPassword().equals(Password)) {
                 return a;
             }
@@ -259,7 +261,7 @@ public class DB {
     /**
      *
      */
-    public void UpdateAdmin() throws RemoteException {
+    public void UpdateAdmin()  {
         Admin s = Admin.getInstance();
         ArrayList<Document> docs = admin.find().into(new ArrayList<Document>());
         if ((docs.size() > 0)) {
