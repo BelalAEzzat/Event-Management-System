@@ -7,7 +7,7 @@ public class Admin extends User {
     
     public static Admin oneAdmin;
     
-    ArrayList<Event_Request> EventRequests;
+    public ArrayList<Event_Request> EventRequests;
     public ArrayList<Venue> Venues;
     public ArrayList<ThirdPartyCompany> ThirdPartyCompanies;
     @Override
