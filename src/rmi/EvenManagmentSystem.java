@@ -15,7 +15,10 @@ public class EvenManagmentSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        DB db = DB.getinstance();
+        Employee e=new Employee(0, "aas", "asd", "emp", "emp");
+        db.insertEmployee(e);
+       
         try {
             // My remote object [Skeleton]
             AdminInterface facade = new AdminFacade();

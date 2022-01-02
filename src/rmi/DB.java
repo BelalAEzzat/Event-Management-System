@@ -67,7 +67,7 @@ public class DB {
 
     }
 
-    public void insertAdmin(Admin s) throws RemoteException {
+    public void insertAdmin(Admin s)  {
         ArrayList<Document> docs = admin.find().into(new ArrayList<Document>());
         if ((docs.size() > 0)) {
             admin.deleteOne(Filters.eq("Email_Address", s.getEmail_Address()));

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Admin extends User {
     
     static Admin oneAdmin;
+
     
     private ArrayList<Event_Request> EventRequests;
     private ArrayList<Venue> Venues;
