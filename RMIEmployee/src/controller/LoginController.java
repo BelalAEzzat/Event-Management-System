@@ -11,10 +11,8 @@ import java.rmi.registry.Registry;
 import javax.swing.JOptionPane;
 
 import rmi.DBinterface;
-import rmi.newLogin /**
-         *
-         * @author pc
-         */
+import rmi.newLogin;
+       
 
 public class LoginController {
 

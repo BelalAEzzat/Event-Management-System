@@ -49,4 +49,10 @@ public class DBfacade extends UnicastRemoteObject implements DBinterface {
         return false;
     }
 
+    @Override
+    public void registorEmployee(String Email, String password) throws RemoteException {
+        Employee e=new Employee(0, "Main", "Null", password, Email);
+        db.insertEmployee(e);
+    }
+
 }
