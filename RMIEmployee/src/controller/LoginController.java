@@ -7,18 +7,16 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import rmi.AdminInterface;
-import rmi.newAdminMenu;
-import rmi.newLogin;
-import rmi.AdminInterface;
-import rmi.DBinterface;
 
-/**
- *
- * @author pc
- */
+import rmi.DBinterface;
+import rmi.newLogin;
+
 public class LoginController {
 
     newLogin gui;
@@ -28,37 +26,58 @@ public class LoginController {
         this.gui = gui;
         this.r = r;
         // This registers the button with our action listener below (the inner class)
-        
-        gui.getjButton3().addActionListener(new btn3lisnter());
 
+        gui.getjButton4().addActionListener(new btn3lisnter());
+        gui.getjButton5().addActionListener(new btn5lisnter());
     }
-    public class btn3lisnter implements ActionListener{
+
+    public class btn3lisnter implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-   try{
-                   DBinterface g = (DBinterface) r.lookup("fac2");
+            try {
+                DBinterface g = (DBinterface) r.lookup("fac2");
 
-            String email = gui.getEmail_textfield().getText();
-            String password = gui.getPass_textfield().getText();
-            boolean a=g.loginAdmin(email, password);
-            System.out.println(a);
-            if(a ==true){
-                gui.dispose();
-                newAdminMenu n=new newAdminMenu();
-                n.show();
-                AdminMainMenuController gui_controller = new AdminMainMenuController(n, r);
-                
-            }else{
-                JOptionPane.showMessageDialog(gui, "Wrong Username/Password");
+                String email = gui.getEmail_textfield().getText();
+                String password = gui.getPass_textfield().getText();
+                boolean a = g.loginEmployee(email, password);
+                System.out.println(a);
+                if (a == true) {
+                    gui.dispose();
+
+                } else {
+                    JOptionPane.showMessageDialog(gui, "Wrong Username/Password");
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);;
             }
-        
-        }catch(Exception e){
-            System.out.println(e);;
-        }
 
         }
-    
-    
+
+    }
+
+    public class btn5lisnter implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            try {
+                DBinterface g = (DBinterface) r.lookup("fac2");
+                String email = gui.getEmail_textfield().getText();
+                String password = gui.getPass_textfield().getText();
+                if(email.equals("")||password.equals("")){
+                JOptionPane.showMessageDialog(gui, "Insert Email/Password");
+                }else{
+                g.registorEmployee(email, password);
+                JOptionPane.showMessageDialog(gui, "you are now registerd");
+                }
+            } catch (RemoteException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NotBoundException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
     }
 }

@@ -15,20 +15,52 @@ import java.rmi.server.UnicastRemoteObject;
 public class DBfacade extends UnicastRemoteObject implements DBinterface {
 
     DB db;
-    public DBfacade() throws RemoteException
 
-    {
+    public DBfacade() throws RemoteException {
         this.db = DB.getinstance();
 
     }
 
     @Override
     public boolean loginAdmin(String Email, String password) throws RemoteException {
-        db.loginAdmin(Email, password);
-        if (!(db.loginAdmin(Email, password)==null)){
-        return true;
-        }else{
-        return false;}
+        if (!(db.loginAdmin(Email, password) == null)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean loginEmployee(String Email, String password) throws RemoteException {
+        if (db.loginemEmployee(Email, password) != null) {
+            System.out.println("true");
+
+            return true;
+
+        }
+        return false;
+    }
+
+    @Override
+    public boolean loginClient(String Email, String password) throws RemoteException {
+        if (db.loginVisitor(Email, password) != null) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void registorEmployee(String Email, String password) throws RemoteException {
+        Employee e = new Employee(0, "Main", "Null", password, Email);
+        db.insertEmployee(e);
+    }
+
+    @Override
+    public void registorClient(String Email, String password) throws RemoteException {
+        Reservee r = new Reservee("name", password, Email);
+        Visitor V = new Visitor("name", password, Email);
+        db.insertreservee(r);
+        db.insertVisitor(V);
     }
 
 }

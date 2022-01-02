@@ -3,23 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rmi.GUI;
+package rmi;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import rmi.DB;
-import rmi.Reservee;
-import rmi.Visitor;
-import rmi.Admin;
-public class Login extends javax.swing.JFrame {
-    static DB db;
-    Reservee r;
-    Visitor v;
-    Admin a;
+import javax.swing.JRootPane;
+import javax.swing.JTextField;
+
+public class newLogin extends javax.swing.JFrame {
+
     /**
      * Creates new form Login
      */
-    public Login() {
+    public newLogin() {
         initComponents();
-        db = DB.getinstance();
+      
     }
 
     /**
@@ -38,6 +37,7 @@ public class Login extends javax.swing.JFrame {
         pass_textfield = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login Page");
@@ -56,6 +56,13 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Login As:");
 
         jButton4.setText("Employee");
+
+        jButton5.setText("Register");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,14 +88,16 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addGap(74, 74, 74)
                 .addComponent(jButton4)
+                .addGap(70, 70, 70)
+                .addComponent(jButton5)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -103,12 +112,22 @@ public class Login extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addGap(33, 33, 33))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addGap(67, 67, 67))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
 
     /**
      * @param args the command line arguments
@@ -127,26 +146,20 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
-                Reservee r = new Reservee("user","user","user");
-                Visitor v = new Visitor("user","user","user");
-                
-                db.insertreservee(r);
-                db.insertVisitor(v);
-                Admin.getInstance();
+      
             }
         });
     }
@@ -154,10 +167,152 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField email_textfield;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField pass_textfield;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getEmail_textfield() {
+        return email_textfield;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public JTextField getPass_textfield() {
+        return pass_textfield;
+    }
+
+    public static int getEXIT_ON_CLOSE() {
+        return EXIT_ON_CLOSE;
+    }
+
+    public JRootPane getRootPane() {
+        return rootPane;
+    }
+
+    public boolean isRootPaneCheckingEnabled() {
+        return rootPaneCheckingEnabled;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public static int getDEFAULT_CURSOR() {
+        return DEFAULT_CURSOR;
+    }
+
+    public static int getCROSSHAIR_CURSOR() {
+        return CROSSHAIR_CURSOR;
+    }
+
+    public static int getTEXT_CURSOR() {
+        return TEXT_CURSOR;
+    }
+
+    public static int getWAIT_CURSOR() {
+        return WAIT_CURSOR;
+    }
+
+    public static int getSW_RESIZE_CURSOR() {
+        return SW_RESIZE_CURSOR;
+    }
+
+    public static int getSE_RESIZE_CURSOR() {
+        return SE_RESIZE_CURSOR;
+    }
+
+    public static int getNW_RESIZE_CURSOR() {
+        return NW_RESIZE_CURSOR;
+    }
+
+    public static int getNE_RESIZE_CURSOR() {
+        return NE_RESIZE_CURSOR;
+    }
+
+    public static int getN_RESIZE_CURSOR() {
+        return N_RESIZE_CURSOR;
+    }
+
+    public static int getS_RESIZE_CURSOR() {
+        return S_RESIZE_CURSOR;
+    }
+
+    public static int getW_RESIZE_CURSOR() {
+        return W_RESIZE_CURSOR;
+    }
+
+    public static int getE_RESIZE_CURSOR() {
+        return E_RESIZE_CURSOR;
+    }
+
+    public static int getHAND_CURSOR() {
+        return HAND_CURSOR;
+    }
+
+    public static int getMOVE_CURSOR() {
+        return MOVE_CURSOR;
+    }
+
+    public static int getNORMAL() {
+        return NORMAL;
+    }
+
+    public static int getICONIFIED() {
+        return ICONIFIED;
+    }
+
+    public static int getMAXIMIZED_HORIZ() {
+        return MAXIMIZED_HORIZ;
+    }
+
+    public static int getMAXIMIZED_VERT() {
+        return MAXIMIZED_VERT;
+    }
+
+    public static int getMAXIMIZED_BOTH() {
+        return MAXIMIZED_BOTH;
+    }
+
+    public static float getTOP_ALIGNMENT() {
+        return TOP_ALIGNMENT;
+    }
+
+    public static float getCENTER_ALIGNMENT() {
+        return CENTER_ALIGNMENT;
+    }
+
+    public static float getBOTTOM_ALIGNMENT() {
+        return BOTTOM_ALIGNMENT;
+    }
+
+    public static float getLEFT_ALIGNMENT() {
+        return LEFT_ALIGNMENT;
+    }
+
+    public static float getRIGHT_ALIGNMENT() {
+        return RIGHT_ALIGNMENT;
+    }
+
 }
