@@ -6,9 +6,9 @@ public class Admin extends User {
     
     static Admin oneAdmin;
     
-    ArrayList<Event_Request> EventRequests;
-    ArrayList<Venue> Venues;
-    ArrayList<ThirdPartyCompany> ThirdPartyCompanies;
+    private ArrayList<Event_Request> EventRequests;
+    private ArrayList<Venue> Venues;
+    private ArrayList<ThirdPartyCompany> ThirdPartyCompanies;
     @Override
     public String toString() {
         return "Admin{" + "EventRequests=" + EventRequests + '}';

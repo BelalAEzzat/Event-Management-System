@@ -184,8 +184,6 @@ public class DB {
         if (docs.size() > 0) {
             String jsonResult = docs.get(0).toJson();
             Admin a = gson.fromJson(jsonResult, Admin.class);
-            System.out.println(a.getPassword());
-            System.out.println(Password);
             if (a.getPassword().equals(Password)) {
                 return a;
             }
