@@ -4,18 +4,42 @@ import java.util.ArrayList;
 
 public class Admin extends User {
     
-    public static Admin oneAdmin;
+    static Admin oneAdmin;
     
-    public ArrayList<Event_Request> EventRequests;
-    public ArrayList<Venue> Venues;
-    public ArrayList<ThirdPartyCompany> ThirdPartyCompanies;
+    ArrayList<Event_Request> EventRequests;
+    ArrayList<Venue> Venues;
+    ArrayList<ThirdPartyCompany> ThirdPartyCompanies;
     @Override
     public String toString() {
         return "Admin{" + "EventRequests=" + EventRequests + '}';
     }
 
+    public static Admin getOneAdmin() {
+        return oneAdmin;
+    }
+
+    public ArrayList<Event_Request> getEventRequests() {
+        return EventRequests;
+    }
+
     public ArrayList<Venue> getVenues() {
         return Venues;
+    }
+
+    public static void setOneAdmin(Admin oneAdmin) {
+        Admin.oneAdmin = oneAdmin;
+    }
+
+    public void setEventRequests(ArrayList<Event_Request> EventRequests) {
+        this.EventRequests = EventRequests;
+    }
+
+    public void setVenues(ArrayList<Venue> Venues) {
+        this.Venues = Venues;
+    }
+
+    public void setThirdPartyCompanies(ArrayList<ThirdPartyCompany> ThirdPartyCompanies) {
+        this.ThirdPartyCompanies = ThirdPartyCompanies;
     }
     
     
