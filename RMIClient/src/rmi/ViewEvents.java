@@ -29,6 +29,50 @@ public class ViewEvents extends javax.swing.JFrame {
         initComponents();
     }
 
+    public static int getDO_NOTHING_ON_CLOSE() {
+        return DO_NOTHING_ON_CLOSE;
+    }
+
+    public static int getHIDE_ON_CLOSE() {
+        return HIDE_ON_CLOSE;
+    }
+
+    public static int getDISPOSE_ON_CLOSE() {
+        return DISPOSE_ON_CLOSE;
+    }
+
+    public static int getWIDTH() {
+        return WIDTH;
+    }
+
+    public static int getHEIGHT() {
+        return HEIGHT;
+    }
+
+    public static int getPROPERTIES() {
+        return PROPERTIES;
+    }
+
+    public static int getSOMEBITS() {
+        return SOMEBITS;
+    }
+
+    public static int getFRAMEBITS() {
+        return FRAMEBITS;
+    }
+
+    public static int getALLBITS() {
+        return ALLBITS;
+    }
+
+    public static int getERROR() {
+        return ERROR;
+    }
+
+    public static int getABORT() {
+        return ABORT;
+    }
+
     public Box.Filler getFiller1() {
         return filler1;
     }

@@ -25,38 +25,49 @@ import rmi.UserMenu;
 import rmi.Event_Reservation;
 import rmi.ViewEvents;
 import rmi.ReserveeInterface;
+
 /**
  * /**
  *
  * @author pc
  */
 public class ViewEventsController {
-    public UserMenu gui;
+
+    public ViewEvents gui;
     public Registry r;
     public String email;
     public String Password;
 
-    public ViewEventsController(UserMenu gui, Registry r, String Email, String password) {
+    public ViewEventsController(ViewEvents gui, Registry r, String Email, String password) {
         this.gui = gui;
         this.r = r;
-        this.email=Email;
-        this.Password=password;
-        refill();
+        this.email = Email;
+        this.Password = password;
         // This registers the button with our action listener below (the inner class)
-   
+        refill();
     }
 
-    public void refill(){
-    try {
+    public void refill() {
+        try {
             ReserveeInterface g = (ReserveeInterface) r.lookup("fac3");
             ArrayList<Integer> VID = new ArrayList<Integer>();
             g.Login(email, Password);
-            VID=g.getEventsID();
+            VID = g.getEventsID();
             System.out.println(VID);
-          
+            ArrayList<Integer> AVID = g.getEventsID();
+            for (int i = 0; i < gui.getjComboBox1().getItemCount(); i++) {
+                VID.add(Integer.parseInt(gui.getjComboBox1().getItemAt(i)));
+            }
+
+            for (int j = 0; j < g.getEventsID().size(); j++) {
+                if (!VID.contains(AVID.get(j))) {
+                    gui.getjComboBox1().addItem(String.valueOf(AVID.get(j)));
+                }
+            }
+
         } catch (Exception e) {
             System.out.println(e);
         }
-    
+
     }
 }

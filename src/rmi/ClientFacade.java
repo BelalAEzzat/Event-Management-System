@@ -90,7 +90,11 @@ public class ClientFacade extends UnicastRemoteObject implements ReserveeInterfa
     public ArrayList<String> GetEventFeedback(int ID) throws RemoteException {
            DB db = DB.getinstance();
         Event a = db.findEventByID(ID);
-        return a.getFeedback();
+        ArrayList<String> n = new ArrayList<>();
+        for (int i = 0; i < a.getFeedback().size(); i++) {
+            n.add(a.getFeedback().get(i).getFeedback());
+        }
+        return n;
     }
 
     @Override

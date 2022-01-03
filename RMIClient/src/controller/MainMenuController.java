@@ -75,7 +75,7 @@ public class MainMenuController {
             gui.dispose();
             ViewEvents n = new ViewEvents();
             n.show();
-            ViewEventsController a = new ViewEventsController(gui, r, Email, Password);
+            ViewEventsController a = new ViewEventsController(n, r, Email, Password);
 
         }
 
