@@ -128,75 +128,7 @@ public class Event implements subject {
         return observers;
     }
 
-    public void invite() {
-        boolean existuser = false;
-        int invitedUserIndex = -1;
-        int invitedUserName;
-        int inviteduserID;
-        System.out.println("pls enter the name of user you want to invite :");
-        Scanner inviteduserObj = new Scanner(System.in);
-        String inviteduser;
-        inviteduser = inviteduserObj.nextLine();
-        if (inviteduser.equals(eventHost.getName())) {
-            System.out.println("you cant invite yourself ");
-        } else {
-            for (int i = 0; i < visitors.size(); i++) {
-                invitedUserIndex = -1;
-                invitedUserName = visitors.get(i).getName();
-                if (inviteduser.equals(visitors.get(i).getName())) {
-                    invitedUserIndex = i;
-                    // inviteduserID=visitors.get(i).getUserID() -1;
-                    existuser = true;
-                    break;
-                }
-            }
-
-            if (existuser) {
-                Invite inv = new Invite(this, eventHost, Visitor.get(invitedUserIndex));
-                Visitor.get(invitedUserIndex).invites.add(inv);
-                System.out.println(invitedUserName + " has been invited ");
-                existuser = false;
-            } else {
-                System.out.println("There is no user called " + inviteduser);
-            }
-        }
-    }
-
-    public void kickVisitor(){
-        boolean existuser=false;
-        int invitedUserIndex = -1;
-        int invitedUserName ;
-        int inviteduserID;
-        System.out.println("pls enter the name of user you want to kick :");
-        Scanner inviteduserObj = new Scanner(System.in);
-        String inviteduser;
-        inviteduser = inviteduserObj.nextLine();
-        if(inviteduser.equals(eventHost.getName())){
-            System.out.println("you cant invite yourself " );
-        }
-        else {
-            if(inviteduser.equals(visitors.get(i).getName())){
-            //inviteduserID=visitors.get(i).getUserID() -1;
-             existuser=true;
-            invitedUserIndex = visitors.indexOf(inviteduser);
-            invitedUserName= visitors.get(invitedUserIndex).getName();
-            break;
-            }  
-
-        if(existuser){ 
-            visitors.remove(invitedUserIndex);
-            int invitationIndex=visitors.get(invitedUserIndex).getAcceptedInvites(indexOf(eventName))
-            visitors.get(invitedUserIndex).getAcceptedInvites()
-            visitors.get(invitedUserIndex).getAcceptedInvites().remove(invitationIndex)
-            System.out.println(invitedUserName +" has been kicked " );
-            existuser=false;
-        }          
-        else{
-            System.out.println("There is no visitor called " + inviteduser);
-            }
-        }
-             
-    }
+    
 
     public void requestService(Service s) {
     }
@@ -218,13 +150,13 @@ public class Event implements subject {
     }
 
     @Override
-    public void registerObserver(even.managment.system.Observer o) {
+    public void registerObserver(event.managment.system.Observer o) {
         throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
                                                                        // Tools | Templates.
     }
 
     @Override
-    public void notifyAllObservers(even.managment.system.Observer o) {
+    public void notifyAllObservers(event.managment.system.Observer o) {
         throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
                                                                        // Tools | Templates.
     }

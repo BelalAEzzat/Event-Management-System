@@ -16,7 +16,7 @@ public class PaymentMethod  {
    private int CardNumber;
    private int CVCCode;
    private String BankName;
-
+   
     public PaymentMethod(int CardNumber, int CVCCode, String BankName) {
         this.CardNumber = CardNumber;
         this.CVCCode = CVCCode;

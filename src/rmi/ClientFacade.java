@@ -18,7 +18,7 @@ public class ClientFacade extends UnicastRemoteObject implements ReserveeInterfa
 
     Reservee r;
     Visitor V;
-
+    Admin a;
     public ClientFacade() throws RemoteException {
         r = new Reservee("", "", "");
         V = new Visitor("", "", "");
@@ -119,5 +119,37 @@ public class ClientFacade extends UnicastRemoteObject implements ReserveeInterfa
             lst.add(v.getVenueName());
         }
         return lst;
+    }
+
+    @Override
+    public ArrayList<String> getCompanies() throws RemoteException {
+        ArrayList<String> lst = new ArrayList<>();
+        for(ThirdPartyCompany c: Admin.getOneAdmin().getThirdPartyCompanies()){
+            lst.add(c.getName());
+        }
+        return lst;
+    }
+
+   
+    
+    @Override
+    public int findIndexOfVenueByname(String N) throws RemoteException {
+        for (int i = 0; i < a.getVenues().size(); i++) {
+            String vName = a.getVenues().get(i).getVenueName();
+            if (N.equals(vName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public void reserveEvent(String vName, ArrayList<String> companies,String bank, int cardNo, int CCV, boolean isPublic, Date date) throws RemoteException {
+        Venue v = a.getVenues().get(findIndexOfVenueByname(vName));
+        PaymentMethod p = new PaymentMethod(cardNo,CCV,bank);
+        Event_Request e = new Event_Request(v,"Pending","",companies,p,(int)Math.random()*100,isPublic,date);
+        Admin.getOneAdmin().addEventRequests(e);
+        DB db = DB.getinstance();
+        db.UpdateAdmin();
     }
 }
