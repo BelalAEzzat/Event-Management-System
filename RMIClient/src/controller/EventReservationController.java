@@ -21,30 +21,22 @@ public class EventReservationController {
 
     public Event_Reservation gui;
     public Registry r;
-    public String Email;
-    public String Password;
 
-    public EventReservationController(Event_Reservation gui, Registry r, String Email, String password) {
+
+    public EventReservationController(Event_Reservation gui, Registry r) {
         this.gui = gui;
         this.r = r;
-        this.Email = Email;
-        this.Password = password;
-  refill();
-    }
-    public void refill() {
-        try {
+        
+        try{
             ReserveeInterface g = (ReserveeInterface) r.lookup("fac3");
-            ArrayList<Integer> VID = new ArrayList<Integer>();
-            g.Login(Email, Password);
-            System.out.println(g.Test());
-            VID = g.getEventsID();
-            System.out.println(VID);
-          
-
-        } catch (Exception e) {
+            for(String s:g.getVenues()){
+                gui.getjComboBox1().addItem(s);
+            }
+        }catch(Exception e){
             System.out.println(e);
         }
 
     }
+  
 
 }

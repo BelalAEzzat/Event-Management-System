@@ -111,4 +111,13 @@ public class ClientFacade extends UnicastRemoteObject implements ReserveeInterfa
         String s="test";
         return s;
     }
+
+    @Override
+    public ArrayList<String> getVenues() throws RemoteException {
+        ArrayList<String> lst = new ArrayList<>();
+        for(Venue v: Admin.getOneAdmin().getVenues()){
+            lst.add(v.getVenueName());
+        }
+        return lst;
+    }
 }

@@ -64,7 +64,7 @@ public class MainMenuController {
             Event_Reservation n = new Event_Reservation();
             n.setLocationRelativeTo(null);
             n.setVisible(true);
-            EventReservationController gui_controller = new EventReservationController(n, r, Email, Password);
+            EventReservationController gui_controller = new EventReservationController(n, r);
         }
     }
 

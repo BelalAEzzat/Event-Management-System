@@ -16,23 +16,27 @@ import java.util.Date;
  */
 public interface ReserveeInterface extends Remote {
 
-    public ArrayList<Integer> getEventsID()throws RemoteException;
+    public ArrayList<Integer> getEventsID() throws RemoteException;
 
-    public String getEventName(int ID)throws RemoteException;
+    public String getEventName(int ID) throws RemoteException;
 
-    public Date GetEventDate(int ID)throws RemoteException;
+    public Date GetEventDate(int ID) throws RemoteException;
 
-    public String getVenueName(int iD)throws RemoteException;
+    public String getVenueName(int iD) throws RemoteException;
 
-    public ArrayList<String> getvisitors(int ID)throws RemoteException;
+    public ArrayList<String> getvisitors(int ID) throws RemoteException;
 
-    public Void KickVisior(String Email,int ID)throws RemoteException;
+    public Void KickVisior(String Email, int ID) throws RemoteException;
 
-    public String SendAnnouncment(int ID, String Announcment)throws RemoteException;
+    public String SendAnnouncment(int ID, String Announcment) throws RemoteException;
 
-    public ArrayList<Integer> getHostedEventIDs(String Email)throws RemoteException;
+    public ArrayList<Integer> getHostedEventIDs(String Email) throws RemoteException;
 
-    public ArrayList<String> GetEventFeedback(int ID)throws RemoteException;
-     public  void Login(String Email,String Password)throws RemoteException;
-     public String Test() throws RemoteException;
+    public ArrayList<String> GetEventFeedback(int ID) throws RemoteException;
+
+    public void Login(String Email, String Password) throws RemoteException;
+
+    public String Test() throws RemoteException;
+
+    public ArrayList<String> getVenues() throws RemoteException;
 }
