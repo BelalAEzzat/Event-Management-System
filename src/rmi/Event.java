@@ -43,6 +43,7 @@ public class Event implements subject {
         this.evetVenue = evetVenue;
         observers = new ArrayList<Observer>();
     }
+   
 
     public void setEventID(int eventID) {
         this.eventID = eventID;
@@ -131,7 +132,7 @@ public class Event implements subject {
     public void invite() {
         boolean existuser = false;
         int invitedUserIndex = -1;
-        int invitedUserName;
+        String invitedUserName;
         int inviteduserID;
         System.out.println("pls enter the name of user you want to invite :");
         Scanner inviteduserObj = new Scanner(System.in);
@@ -185,9 +186,8 @@ public class Event implements subject {
 
         if(existuser){ 
             visitors.remove(invitedUserIndex);
-            int invitationIndex=visitors.get(invitedUserIndex).getAcceptedInvites(indexOf(eventName))
-            visitors.get(invitedUserIndex).getAcceptedInvites()
-            visitors.get(invitedUserIndex).getAcceptedInvites().remove(invitationIndex)
+            int invitationIndex=visitors.get(invitedUserIndex).getAcceptedInvites(indexOf(eventName));
+            visitors.get(invitedUserIndex).getAcceptedInvites().remove(invitationIndex);
             System.out.println(invitedUserName +" has been kicked " );
             existuser=false;
         }          

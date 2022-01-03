@@ -9,7 +9,7 @@ package rmi;
  *
  * @author pc
  */
-public class ThirdPartyCompany {
+public class ThirdPartyCompany implements ReadOnlyThirdParty {
     private String name;
 
     public ThirdPartyCompany(String name, String Type) {
