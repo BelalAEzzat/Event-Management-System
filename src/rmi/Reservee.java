@@ -46,12 +46,7 @@ public class Reservee extends User {
     }
 
 
-   
-   public void requestEvent(Event event){
-   
-   
-   
-   }
+  
    
     
 }

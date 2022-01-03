@@ -26,7 +26,7 @@ public interface ReserveeInterface extends Remote {
 
     public ArrayList<String> getvisitors(int ID)throws RemoteException;
 
-    public Void KickVisior(String Email)throws RemoteException;
+    public Void KickVisior(String Email,int ID)throws RemoteException;
 
     public String SendAnnouncment(int ID, String Announcment)throws RemoteException;
 
