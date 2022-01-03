@@ -15,26 +15,7 @@ abstract public class User {
         this.Email_Address = Email_Address;
     }
 
-    public boolean Log_In() {
-
-        return true;
-    }
-
-    public boolean Log_Out() {
-
-        return true;
-    }
-
-    public boolean Change_Email() {
-
-        return true;
-    }
-
-    public boolean Change_Password() {
-
-        return true;
-    }
-
+  
     public String getName() {
         return Name;
     }
