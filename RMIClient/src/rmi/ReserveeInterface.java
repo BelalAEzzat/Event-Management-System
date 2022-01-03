@@ -34,4 +34,5 @@ public interface ReserveeInterface extends Remote {
 
     public ArrayList<String> GetEventFeedback(int ID)throws RemoteException;
      public  void Login(String Email,String Password)throws RemoteException;
+     public String Test() throws RemoteException;
 }

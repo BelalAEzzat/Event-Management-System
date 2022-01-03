@@ -52,17 +52,22 @@ public class ViewEventsController {
             ReserveeInterface g = (ReserveeInterface) r.lookup("fac3");
             ArrayList<Integer> VID = new ArrayList<Integer>();
             g.Login(email, Password);
+            System.out.println(g.Test());
             VID = g.getEventsID();
             System.out.println(VID);
-            ArrayList<Integer> AVID = g.getEventsID();
+           ArrayList<Integer> a=new ArrayList<>();
             for (int i = 0; i < gui.getjComboBox1().getItemCount(); i++) {
-                VID.add(Integer.parseInt(gui.getjComboBox1().getItemAt(i)));
+                a.add(Integer.parseInt(gui.getjComboBox1().getItemAt(i)));
             }
 
             for (int j = 0; j < g.getEventsID().size(); j++) {
-                if (!VID.contains(AVID.get(j))) {
-                    gui.getjComboBox1().addItem(String.valueOf(AVID.get(j)));
+                if (!a.contains(VID.get(j))) {
+                    gui.getjComboBox1().addItem(String.valueOf(VID.get(j)));
                 }
+            }
+            if(!gui.getjComboBox1().getItemAt(0).equals("")){
+            gui.getjLabel19().setText(g.getEventName((int)gui.getjComboBox1().getSelectedItem()));
+            
             }
 
         } catch (Exception e) {
