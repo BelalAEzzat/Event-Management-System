@@ -7,23 +7,28 @@ package rmi;
 
 import java.security.Provider;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class Event_Request {
    private Venue venue;
    private String Status;
    private String Descirption;
-   private ArrayList<Service> services;
+   private ArrayList<String> services;
    private PaymentMethod paymentmethod;
    private int fees;
+   private boolean isPublic;
+   private Date date;
 
-    public Event_Request(Venue venue, String Status, String Descirption, ArrayList<Service> services,  PaymentMethod paymentmethod, int fees) {
+    public Event_Request(Venue venue, String Status, String Descirption, ArrayList<String> services,  PaymentMethod paymentmethod, int fees,boolean isPublic,Date date) {
         this.venue = venue;
         this.Status = Status;
         this.Descirption = Descirption;
         this.services = services;
         this.paymentmethod = paymentmethod;
         this.fees = fees;
+        this.isPublic = isPublic;
+        this.date = date;
     }
 
     public Venue getVenue() {
@@ -38,7 +43,7 @@ public class Event_Request {
         return Descirption;
     }
 
-    public ArrayList<Service> getServices() {
+    public ArrayList<String> getServices() {
         return services;
     }
 
@@ -63,7 +68,7 @@ public class Event_Request {
         this.Descirption = Descirption;
     }
 
-    public void setServices(ArrayList<Service> services) {
+    public void setServices(ArrayList<String> services) {
         this.services = services;
     }
 
@@ -81,7 +86,7 @@ public class Event_Request {
     }
    public void calcFees(){
        for(int i=0;i<services.size();i++){
-          this.fees=+services.get(i).getPrice();
+          //this.fees=+services.get(i).getprice();
         }
    }
 }

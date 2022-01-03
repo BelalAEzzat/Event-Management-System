@@ -123,6 +123,18 @@ public class Event_Reservation extends javax.swing.JFrame {
 
         jLabel11.setText("CVV");
 
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
+
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
+
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visa", "MasterCard", "American Express" }));
 
         jCalendar1.setWeekOfYearVisible(false);
@@ -249,6 +261,20 @@ public class Event_Reservation extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        char c = evt.getKeyChar();
+       if(!Character.isDigit(c)){
+           evt.consume();
+       }
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        char c = evt.getKeyChar();
+       if(!Character.isDigit(c)){
+           evt.consume();
+       }
+    }//GEN-LAST:event_jTextField5KeyTyped
 
     public Button getButton1() {
         return button1;

@@ -7,7 +7,7 @@ public class Visitor extends User {
 
     private String EventAnnouncement;
     // Change from String Type to Events when it's completed.
-    ArrayList<String> Invites;
+    ArrayList<Invite> Invites;
 
     ArrayList<String> Accepted_Events;
 
@@ -22,11 +22,11 @@ public class Visitor extends User {
 
     public Visitor(String Name, String Password, String Email_Address) {
         super(Name, Password, Email_Address);
-        Invites = new ArrayList<String>();
+        Invites = new ArrayList<>();
 
-        Accepted_Events = new ArrayList<String>();
+        Accepted_Events = new ArrayList<>();
 
-        Visited_Events = new ArrayList<String>();
+        Visited_Events = new ArrayList<>();
     }
 
     // Change from String Type to Event when it's completed.

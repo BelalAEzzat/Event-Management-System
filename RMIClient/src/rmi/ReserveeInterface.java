@@ -39,4 +39,10 @@ public interface ReserveeInterface extends Remote {
     public String Test() throws RemoteException;
 
     public ArrayList<String> getVenues() throws RemoteException;
+    
+    public ArrayList<String> getCompanies() throws RemoteException;
+    
+    public int findIndexOfVenueByname(String N) throws RemoteException;
+
+    public void reserveEvent(String vName, ArrayList<String> companies,String bank, int cardNo, int CCV,boolean isPublic,Date date) throws RemoteException;
 }
