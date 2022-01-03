@@ -36,15 +36,27 @@ public class MainMenuController {
         this.gui = gui;
         this.r = r;
         this.email = Email;
-            this.Password = password;
+        this.Password = password;
         // This registers the button with our action listener below (the inner class)
-        gui.getjButton1().addActionListener(new ReserveEvent());
-        gui.getjButton5().addActionListener(new ViewEvent(gui, r,email,Password));
+        gui.getjButton1().addActionListener(new ReserveEvent(gui, r, email, Password));
+        gui.getjButton5().addActionListener(new ViewEvent(gui, r, email, Password));
         gui.getjButton4().addActionListener(new ViewNotificatios());
         gui.getjButton6().addActionListener(new Logout(gui, r));
     }
 
     private class ReserveEvent implements ActionListener {
+
+        public UserMenu gui;
+        public Registry r;
+        public String Email;
+        public String Password;
+
+        public ReserveEvent(UserMenu gui, Registry r, String Email, String Password) {
+            this.gui = gui;
+            this.r = r;
+            this.Email = Email;
+            this.Password = Password;
+        }
 
         @Override
         public void actionPerformed(ActionEvent ae) {

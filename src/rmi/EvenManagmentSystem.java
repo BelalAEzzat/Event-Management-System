@@ -8,6 +8,7 @@ package rmi;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Date;
 
 public class EvenManagmentSystem {
 
@@ -16,9 +17,14 @@ public class EvenManagmentSystem {
      */
     public static void main(String[] args) {
         DB db = DB.getinstance();
+        Date g=new Date(5,3, 2000);
+        Event_Request rq=new Event_Request(null, "sadf", "asdf", null, null, 0);
         Employee e = new Employee(0, "aas", "asd", "emp", "emp");
-        db.insertEmployee(e);
-
+        Venue xm=new Venue("Asfed", "asdf", 0);
+        Reservee mk= db.LoginReservee("belal", "belal");
+        Event a=new Event( 43,"name", g, rq, mk, true, "asdf", xm);
+        db.insertEvent(a);
+     
         try {
             // My remote object [Skeleton]
             AdminInterface facade = new AdminFacade();

@@ -105,4 +105,19 @@ public class ClientFacade extends UnicastRemoteObject implements ReserveeInterfa
         System.out.println(r.getUpcomingEvents());
 
     }
+
+    @Override
+    public String Test() throws RemoteException {
+        String s="test";
+        return s;
+    }
+
+    @Override
+    public ArrayList<String> getVenues() throws RemoteException {
+        ArrayList<String> lst = new ArrayList<>();
+        for(Venue v: Admin.getOneAdmin().getVenues()){
+            lst.add(v.getVenueName());
+        }
+        return lst;
+    }
 }

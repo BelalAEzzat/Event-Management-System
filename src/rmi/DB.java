@@ -322,6 +322,18 @@ public class DB {
         PaymentMethod.insertOne(Document.parse(gson.toJson(s)));
         System.out.println("Employee inserted.");
     }
+        public int getVenuesMaxID(){
+            int max=0;
+        ArrayList<Document> docs = Event.find().into(new ArrayList<Document>());
+        for (int i = 0; i < docs.size(); i++) {
+            String jsonResult = docs.get(i).toJson();
+            if ((gson.fromJson(jsonResult, Event.class).getEventID() >max)) {
+                max=gson.fromJson(jsonResult, Event.class).getEventID();
+            }
+        }
+        
+        return max;
+        }
 
 
 
